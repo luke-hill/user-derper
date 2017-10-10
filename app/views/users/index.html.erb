@@ -1,3 +1,5 @@
-HELLO WORLD!</br>
-
-NUMBER OF USERS: <%= User.count %>
+<% @users.each do |user| %>
+  <%= user.first_name %></br>
+  <%= user.surname %></br>
+  <%= user.email %></br>
+<% end %>
