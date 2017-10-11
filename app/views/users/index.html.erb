@@ -1,10 +1,13 @@
 <h1>The User_Derpers List of Magical Users</h1>
 
+</br>
+<h3>Users on On the Beach</h3> 
 <table>
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
+    <th>Domain</th>
     <th colspan="2"></th>
   </tr>
 
@@ -13,12 +16,13 @@
       <td><%= user.first_name %></td>
       <td><%= user.surname %></td>
       <td><%= user.email %></td>
+      <td><%= render partial: 'uk_flag' %></td>
     </tr>
   <% end %>
 </table>
 
-And now Sven! </br>
-
+</br>
+<h3>Users on eBeach.se</h3>
 <table>
   <tr>
     <th>First Name</th>
@@ -32,12 +36,13 @@ And now Sven! </br>
       <td><%= user.first_name %></td>
       <td><%= user.surname %></td>
       <td><%= user.email %></td>
+      <td><%= render partial: 'se_flag' %></td>
     </tr>
   <% end %>
 </table>
 
-And now Annike! </br>
-
+</br>
+<h3>Users on eBeach.se</h3>
 <table>
   <tr>
     <th>First Name</th>
@@ -51,6 +56,7 @@ And now Annike! </br>
       <td><%= user.first_name %></td>
       <td><%= user.surname %></td>
       <td><%= user.email %></td>
+      <td><%= render partial: 'no_flag' %></td>
     </tr>
   <% end %>
 </table>
