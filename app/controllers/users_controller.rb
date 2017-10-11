@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @uk_users = uk_users
+    @se_users = se_users
+    @no_users = no_users
   end
 
   def show; end
@@ -16,13 +19,25 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     @user.destroy
     redirect_to users_path
   end
-
+  
   private
+  
+  def uk_users
+    User.all.where(domain: 'uk')
+  end
+  
+  def se_users
+    User.all.where(domain: 'se')
+  end
+
+  def no_users
+    User.all.where(domain: 'no')
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :surname, :email)
@@ -31,5 +46,4 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
-
 end
