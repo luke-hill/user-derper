@@ -21,6 +21,7 @@
       <td><%= link_to 'Destroy', user_path(user),
               method: :delete,
               data: {confirm: 'Are you sure?'}%></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
     </tr>
   <% end %>
 </table>
@@ -42,9 +43,13 @@
       <td><%= user.email %></td>
       <td><%= render partial: 'se_flag' %></td>
       <td><%= link_to 'Show', user_path(user) %></td>
+<<<<<<< HEAD
       <td><%= link_to 'Destroy', user_path(user),
               method: :delete,
               data: {confirm: 'Are you sure?'}%></td>
+=======
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+>>>>>>> master
     </tr>
   <% end %>
 </table>
@@ -66,9 +71,13 @@
       <td><%= user.email %></td>
       <td><%= render partial: 'no_flag' %></td>
       <td><%= link_to 'Show', user_path(user) %></td>
+<<<<<<< HEAD
       <td><%= link_to 'Destroy', user_path(user),
               method: :delete,
               data: {confirm: 'Are you sure?'}%></td>
+=======
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+>>>>>>> master
     </tr>
   <% end %>
 </table>

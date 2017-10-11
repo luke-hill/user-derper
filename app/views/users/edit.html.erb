@@ -1,0 +1,14 @@
+<%= form_for @user do |f| %>
+  <strong><%= f.label :first_name %>:</strong>
+  <%= f.text_field :first_name %><br />
+  
+  <strong><%= f.label :surname %>:</strong>
+  <%= f.text_field :surname %><br />
+  
+  <strong><%= f.label :email %>:</strong>
+  <%= f.text_field :email %><br />
+  
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', users_path %>
