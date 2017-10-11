@@ -12,15 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171011144947) do
 
-  create_table "extra_users", primary_key: "idextra_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "first_name"
-    t.string "surname"
-    t.string "email", limit: 45
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "surname"
     t.string "email"
