@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 require_relative '../../app/models/user'
 
 RSpec.describe User, type: :model do
@@ -45,4 +44,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
