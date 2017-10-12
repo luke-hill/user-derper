@@ -1,6 +1,6 @@
 class Search < ApplicationRecord
-  belongs_to :user, foreign_key: :user_id
-  belongs_to :hotel, foreign_key: :hotel_id
-  belongs_to :destination, foreign_key: :destination_id
-
+  belongs_to :user
+  belongs_to :hotel
+  belongs_to :destination
+  has_one :holiday
 end
