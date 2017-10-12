@@ -18,10 +18,15 @@ ActiveRecord::Schema.define(version: 20171012004316) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "extra_users", primary_key: "idextra_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "first_name"
-    t.string "surname"
-    t.string "email", limit: 45
+  create_table "searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "destination_id"
+    t.integer "adults"
+    t.integer "children"
+    t.integer "infants"
+    t.date "departure_date"
+    t.integer "nights"
+    t.timestamp "searched_at"
+    t.integer "user_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
