@@ -8,5 +8,8 @@
 
 Hotel.destroy_all
 Destination.destroy_all
-require_relative 'destination'
+Holiday.destroy_all
+
 require_relative 'hotel'
+require_relative 'destination'
+require_relative 'holiday'
