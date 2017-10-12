@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012004316) do
+ActiveRecord::Schema.define(version: 20171012090914) do
+
+  create_table "holidays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "myb"
+    t.integer "user_id"
+    t.integer "search_id"
+  end
 
   create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -29,6 +35,8 @@ ActiveRecord::Schema.define(version: 20171012004316) do
     t.integer "user_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hotel_id"
+    t.string "holiday_type"
   end
 
   create_table "hotels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
