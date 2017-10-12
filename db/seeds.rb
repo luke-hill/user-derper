@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Hotel.destroy_all
+Destination.destroy_all
+require_relative 'destination'
+require_relative 'hotel'
