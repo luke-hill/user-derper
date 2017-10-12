@@ -19,18 +19,18 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @user.destroy
     redirect_to users_path
   end
-  
+
   private
-  
+
   def uk_users
     User.all.where(domain: 'uk')
   end
-  
+
   def se_users
     User.all.where(domain: 'se')
   end
