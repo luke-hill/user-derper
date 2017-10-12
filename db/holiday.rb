@@ -1,8 +1,4 @@
-Holiday.destroy_all
-
-myb_refs = 100.times.map do |value|
-  "MYB#{value}B"
-end
+myb_refs = Array.new(100) { |value| "MYB#{value}B" }
 
 user_one_id = User.find_by_email('test@test.com').id #tofix
 user_two_id = User.find_by_email('test@test.com').id #tofix
