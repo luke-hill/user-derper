@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011144947) do
+ActiveRecord::Schema.define(version: 20171012004316) do
+
+  create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "extra_users", primary_key: "idextra_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "first_name"
@@ -18,6 +24,14 @@ ActiveRecord::Schema.define(version: 20171011144947) do
     t.string "email", limit: 45
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hotels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "destinations_id"
+    t.index ["destinations_id"], name: "index_hotels_on_destinations_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -29,4 +43,5 @@ ActiveRecord::Schema.define(version: 20171011144947) do
     t.string "domain"
   end
 
+  add_foreign_key "hotels", "destinations", column: "destinations_id"
 end
