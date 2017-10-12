@@ -16,127 +16,221 @@ user_thirteen_id = User.find_by_email('DENNIS.Mills@hotmail.com').id #no
 user_fourteen_id = User.find_by_email('EVAN.Owen@hotmail.com').id #uk
 user_fifteen_id = User.find_by_email('HECTOR.Palmer@hotmail.com').id #se
 user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
+#7 * UK User / 4 * SE User / 5 * NO User -> 16 Users in Total
 
-100.times do
+100.times do |value|
   holiday_type = holiday_types.sample
-  
-  hotel = 
-    if type == 'FLO'
-      nil
-    else
-      Hotel.all.sample
-    end
+  hotel = Hotel.all.sample unless holiday_type == 'FLO'
+  hotel_id = hotel.id if hotel
 
   case value
-    when 0..9
-      Search.create(
-        destination_id: hotel.destinations_id,
-        adults: rand(1..4),
-        children: rand(0..3),
-        infants: rand(0..2),
-        departure_date: DateTime.now + rand(20..150),
-        nights: rand(4..14),
-        searched_at: DateTime.now - rand(0..10),
-        user_id: user_one_id,
-        hotel_id: hotel.id,
-        holiday_type: holiday_type
-      )
-    when 10..14
-      Search.create(
-        destination_id: hotel.destinations_id,
-        adults: rand(1..4),
-        children: rand(0..3),
-        infants: rand(0..2),
-        departure_date: DateTime.now + rand(20..150),
-        nights: rand(4..14),
-        searched_at: DateTime.now - rand(0..10),
-        user_id: user_one_id,
-        hotel_id: hotel.id,
-        holiday_type: holiday_type
-      )
-    when 15..29
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_three_id,
-          search_id: Search.all[value].id
-      )
-    when 30..32
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_four_id,
-          search_id: Search.all[value].id
-      )
-    when 33..34
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_five_id,
-          search_id: Search.all[value].id
-      )
-    when 35..36
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_six_id,
-          search_id: Search.all[value].id
-      )
-    when 37..38
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_seven_id,
-          search_id: Search.all[value].id
-      )
-    when 39..40
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_eight_id,
-          search_id: Search.all[value].id
-      )
-    when 41..50
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_nine_id,
-          search_id: Search.all[value].id
-      )
-    when 51..51
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_ten_id,
-          search_id: Search.all[value].id
-      )
-    when 52..52
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_eleven_id,
-          search_id: Search.all[value].id
-      )
-    when 53..53
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_twelve_id,
-          search_id: Search.all[value].id
-      )
-    when 54..54
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_thirteen_id,
-          search_id: Search.all[value].id
-      )
-    when 55..65
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_fourteen_id,
-          search_id: Search.all[value].id
-      )
-    when 66..78
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_fifteen_id,
-          search_id: Search.all[value].id
-      )
-    else
-      Holiday.create(
-          myb: myb_refs[value],
-          user_id: user_sixteen_id,
-          search_id: Search.all[value].id
-      )
+  when 0..9
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_one_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 10..14
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_two_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 15..29
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_three_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 30..32
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_four_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 33..34
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_five_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 35..36
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_six_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 37..38
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_seven_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 39..40
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_eight_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 41..50
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_nine_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 51..51
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_ten_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 52..52
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_eleven_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 53..53
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_twelve_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 54..54
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_thirteen_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 55..65
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_fourteen_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  when 66..78
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_fifteen_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
+  else
+    Search.create(
+      destination_id: hotel.destination.id,
+      adults: rand(1..4),
+      children: rand(0..3),
+      infants: rand(0..2),
+      departure_date: DateTime.now + rand(20..150),
+      nights: rand(4..14),
+      searched_at: DateTime.now - rand(0..10),
+      user_id: user_sixteen_id,
+      hotel_id: hotel_id,
+      holiday_type: holiday_type
+    )
   end
 end
