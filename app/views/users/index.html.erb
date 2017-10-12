@@ -1,6 +1,10 @@
 <h1>The User_Derpers List of Magical Users</h1>
 
 </br>
+We currently have <%= @uk_users.count %> UK Users <br />
+We currently have <%= @se_users.count %> SE Users <br />
+We currently have <%= @no_users.count %> NO Users <br />
+
 <h3>Users on On the Beach</h3>
 <table>
   <tr>
@@ -13,9 +17,9 @@
 
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.first_name %></td>
+      <td><%= user.first_name.capitalize %></td>
       <td><%= user.surname %></td>
-      <td><%= user.email %></td>
+      <td><%= user.email.capitalize %></td>
       <td><%= render user.flag %></td>
       <td><%= link_to 'Show', user_path(user) %></td>
       <td><%= link_to 'Destroy', user_path(user),
@@ -25,7 +29,3 @@
     </tr>
   <% end %>
 </table>
-
-We currently have <%= @uk_users.count %> UK Users <br />
-We currently have <%= @se_users.count %> SE Users <br />
-We currently have <%= @no_users.count %> NO Users <br />

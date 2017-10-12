@@ -1,19 +1,14 @@
 <p>
-  <strong>First Name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.surname %>
+  <strong>User Name:</strong>
+  <%= @user.user_name %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @user.email.capitalize %>
 </p>
 
-<p>Well hello there - Test - Your last search was...</p>
+<p>Well hello there - <%=@user.user_name%> - Your last search was...</p>
 
 Where: <%= @user.last_search_info[:where] %> <br />
 When: <%= @user.last_search_info[:when] %> <br />
