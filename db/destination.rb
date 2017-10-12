@@ -1,4 +1,3 @@
-
 Destination.create(name: 'Maldives')
 Destination.create(name: 'Male')
 Destination.create(name: 'Mauritius')

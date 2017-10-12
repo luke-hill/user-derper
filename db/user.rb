@@ -1,5 +1,4 @@
-User.destroy_all
-
+User.create(first_name: 'Test', surname: 'Test', email: 'test@test.com', domain: 'uk')
 User.create(first_name: 'WILLIAM', surname: 'Corbyn', email: 'WILLIAM.Corbyn@hotmail.com', domain: 'uk')
 User.create(first_name: 'JOHN', surname: 'Smith', email: 'JOHN.Smith@hotmail.com', domain: 'se')
 User.create(first_name: 'GEORGE', surname: 'Jones', email: 'GEORGE.Jones@hotmail.com', domain: 'no')
