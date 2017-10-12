@@ -16,6 +16,10 @@ ActiveRecord::Schema.define(version: 20171012090914) do
     t.string "myb"
     t.integer "user_id"
     t.integer "search_id"
+  end
+
+  create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +39,15 @@ ActiveRecord::Schema.define(version: 20171012090914) do
     t.string "holiday_type"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "hotels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "destinations_id"
+    t.index ["destinations_id"], name: "index_hotels_on_destinations_id"
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "first_name"
     t.string "surname"
     t.string "email"
@@ -44,4 +56,5 @@ ActiveRecord::Schema.define(version: 20171012090914) do
     t.string "domain"
   end
 
+  add_foreign_key "hotels", "destinations", column: "destinations_id"
 end
