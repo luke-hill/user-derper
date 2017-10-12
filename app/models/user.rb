@@ -8,4 +8,12 @@ class User < ApplicationRecord
   def flag
     "#{domain}_flag"
   end
+  
+  def last_search
+    {
+      when: DateTime.now,
+      where: 'Tenerife',
+    }
+    #searches.last
+  end
 end
