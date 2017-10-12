@@ -20,13 +20,20 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
 
 100.times do |value|
   holiday_type = holiday_types.sample
-  hotel = Hotel.all.sample unless holiday_type == 'FLO'
-  hotel_id = hotel.id if hotel
 
+  if holiday_type == 'FLO'
+    hotel_id = nil
+    destination_id = Destination.all.sample.id
+  else
+    hotel = Hotel.all.sample
+    hotel_id = hotel.id
+    destination_id = hotel.destination.id
+  end
+  
   case value
   when 0..9
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -39,7 +46,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 10..14
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -52,7 +59,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 15..29
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -65,7 +72,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 30..32
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -78,7 +85,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 33..34
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -91,7 +98,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 35..36
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -104,7 +111,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 37..38
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -117,7 +124,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 39..40
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -130,7 +137,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 41..50
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -143,7 +150,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 51..51
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -156,7 +163,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 52..52
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -169,7 +176,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 53..53
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -182,7 +189,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 54..54
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -195,7 +202,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 55..65
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -208,7 +215,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   when 66..78
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
@@ -221,7 +228,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   else
     Search.create(
-      destination_id: hotel.destination.id,
+      destination_id: destination_id,
       adults: rand(1..4),
       children: rand(0..3),
       infants: rand(0..2),
