@@ -15,8 +15,10 @@
 
 <p>Well hello there - Test - Your last search was...</p>
 
-Where: <%= @user.last_search[:where] %> <br />
-When: <%= @user.last_search[:when] %> <br />
+Where: <%= @user.last_search_info[:where] %> <br />
+When: <%= @user.last_search_info[:when] %> <br />
+Pax: <%= @user.last_search_info[:pax] %> <br />
+ALSO WELL DONE FOR BOOKING <span class="important"><%= @user.holidays.count %></span> Holidays with us<br />
 
-<%= link_to 'Back', users_path %>
 <%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Back', users_path %>

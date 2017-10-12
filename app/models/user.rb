@@ -9,11 +9,25 @@ class User < ApplicationRecord
     "#{domain}_flag"
   end
   
-  def last_search
+  def last_search_info
     {
-      when: DateTime.now,
-      where: 'Tenerife',
+      when: last_search.searched_at,
+      where: location,
+      pax: formatted_pax
     }
-    #searches.last
+  end
+  
+  private
+  
+  def location
+    Destination.find(last_search.destination_id).name
+  end
+  
+  def formatted_pax
+    "#{last_search.adults}/#{last_search.children}/#{last_search.infants}"
+  end
+  
+  def last_search
+    @last_search ||= searches.last
   end
 end
