@@ -66,5 +66,4 @@ ActiveRecord::Schema.define(version: 20171012152103) do
     t.string "domain"
   end
 
-  add_foreign_key "hotels", "destinations"
 end
