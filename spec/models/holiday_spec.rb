@@ -10,7 +10,7 @@ RSpec.describe Holiday, type: :model do
       )
     end
 
-    it 'has an MYB number first name' do
+    it 'has an MYB number' do
       expect(valid_holiday.myb).to eq('MYB1B')
     end
 
@@ -20,16 +20,10 @@ RSpec.describe Holiday, type: :model do
   end
 
   context 'an invalid holiday' do
-    let(:invalid_holiday) do
-      Holiday.create(
-        myb: '',
-        user_id: nil,
-        search_id: nil
-      )
-    end
+    let(:invalid_holiday) { Holiday.create }
 
     it 'must have all attributes' do
-      expect(invalid_holiday.errors.keys.length).to eq 3
+      expect(invalid_holiday.errors.keys.length).to eq 5
     end
 
     it 'does not save to the database' do
