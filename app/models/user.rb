@@ -22,7 +22,12 @@ class User < ApplicationRecord
   end
 
   def last_holiday
-
+#    {
+#    when: last_holiday.created_at,
+#      where: location,
+#      hotel:
+#      pax: formatted_pax
+#    }
   end
 
   private
@@ -38,4 +43,7 @@ class User < ApplicationRecord
   def last_search
     @last_search ||= searches.last
   end
+
+  def last_holiday
+    @last_holiday ||= holidays.last
 end
