@@ -1,4 +1,6 @@
 class Hotel < ApplicationRecord
-  belongs_to :destination, foreign_key: :destinations_id
+  belongs_to :destination
+  has_many :searches
+  
   validates_presence_of :name, :destinations_id
 end
