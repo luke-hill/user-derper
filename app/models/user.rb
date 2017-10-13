@@ -21,6 +21,10 @@ class User < ApplicationRecord
     first_name.capitalize + ' ' + surname
   end
 
+  def last_holiday
+    
+  end
+
   private
 
   def location
