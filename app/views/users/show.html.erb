@@ -1,3 +1,5 @@
+
+<h2>User Details</h2>
 <p>
   <strong>User Name:</strong>
   <%= @user.user_name %>
@@ -8,12 +10,30 @@
   <%= @user.email.capitalize %>
 </p>
 
-<p>Well hello there - <%=@user.user_name%> - Your last search was...</p>
+<h2>Last Search</h2>
 
-Where: <%= @user.last_search_info[:where] %> <br />
-When: <%= @user.last_search_info[:when] %> <br />
-Pax: <%= @user.last_search_info[:pax] %> <br />
-ALSO WELL DONE FOR BOOKING <span class="important"><%= @user.holidays.count %></span> Holidays with us<br />
+<strong>Where:</strong> <%= @user.last_search_info[:where] %> <br />
+<strong>When: </strong><%= @user.last_search_info[:when] %> <br />
+<strong>Pax:</strong> <%= @user.last_search_info[:pax] %> <br />
 
+<h2> Last Holiday Booked </h2>
+
+Total Holidays booked: <span class="important"><%= @user.holidays.count %></span>
+<br>
+<br>
+<strong>Order No:</strong> <%= @user.last_holiday_info[:order_id] %> <br>
+<strong>Confirmed On:</strong> <%= @user.last_holiday_info[:order_date] %> <br>
+<br>
+<strong>Departure Date:</strong> <%= @user.last_holiday_info[:dep_date] %> <br>
+<strong>Duration:</strong> <%= @user.last_holiday_info[:nights] %> <br>
+<strong>Return Date:</strong> <%= @user.last_holiday_info[:arr_date] %> <br>
+<br>
+<strong>Hotel:</strong> <%= @user.last_holiday_info[:hotel] %> <br>
+<strong>Destination:</strong> <%= @user.last_holiday_info[:where] %> <br>
+<br>
+<strong>Holiday Type:</strong> <%= @user.last_holiday_info[:hol_type] %> <br>
+<strong>Passengers:</strong> <%= @user.last_holiday_info[:pax] %> <br>
+
+<br>
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', users_path %>

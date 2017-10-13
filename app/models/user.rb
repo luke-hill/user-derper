@@ -12,8 +12,8 @@ class User < ApplicationRecord
   def last_search_info
     {
       when: last_search.searched_at,
-      where: location,
-      pax: formatted_pax
+      where: search_location,
+      pax: search_formatted_pax
     }
   end
 
@@ -21,23 +21,46 @@ class User < ApplicationRecord
     first_name.capitalize + ' ' + surname
   end
 
-  def last_holiday
-#    {
-#    when: last_holiday.created_at,
-#      where: location,
-#      hotel:
-#      pax: formatted_pax
-#    }
+  def last_holiday_info
+    {
+      order_id: last_holiday.myb,
+      order_date: last_holiday.created_at,
+      nights: booked.nights,
+      dep_date: booked.departure_date,
+      arr_date: (booked.departure_date + booked.nights),
+      hol_type: booked.holiday_type,
+      where: booked_location,
+      hotel: booked_hotel,
+      pax: booked_formatted_pax
+    }
+  end
+
+  def booked
+    booked_search = holidays.last.search_id
+    @last_booked = Search.find(booked_search)
   end
 
   private
 
-  def location
+  def booked_hotel
+    Hotel.find(booked.hotel_id).name
+  end
+
+  def  booked_location
+    Destination.find(booked.destination_id).name
+  end
+
+  def  booked_formatted_pax
+    "Adults: #{booked.adults} / Children: #{booked.children} / Infants: #{booked.infants}"
+  end
+
+
+  def search_location
     Destination.find(last_search.destination_id).name
   end
 
-  def formatted_pax
-    "#{last_search.adults}/#{last_search.children}/#{last_search.infants}"
+  def search_formatted_pax
+    "Adults: #{last_search.adults} / Children: #{last_search.children} / Infants: #{last_search.infants}"
   end
 
   def last_search
@@ -46,4 +69,6 @@ class User < ApplicationRecord
 
   def last_holiday
     @last_holiday ||= holidays.last
+  end
+
 end
