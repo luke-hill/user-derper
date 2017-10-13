@@ -244,8 +244,10 @@ end
 
 users =
   [
-    user_one_id, user_two_id, user_four_id, user_six_id, user_eight_id, user_nine_id,
-    user_ten_id, user_eleven_id, user_twelve_id, user_fifteen_id, user_sixteen_id
+    user_one_id, user_two_id, user_three_id, user_four_id, user_five_id,
+    user_six_id, user_seven_id, user_eight_id, user_nine_id, user_ten_id,
+    user_eleven_id, user_twelve_id, user_thirteen_id, user_fourteen_id,
+    user_fifteen_id, user_sixteen_id
   ]
 
 users.each do |user_id|
