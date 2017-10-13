@@ -241,3 +241,39 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     )
   end
 end
+
+users =
+  [
+    user_one_id, user_two_id, user_four_id, user_six_id, user_eight_id, user_nine_id,
+    user_ten_id, user_eleven_id, user_twelve_id, user_fifteen_id, user_sixteen_id
+  ]
+
+users.each do |user_id|
+  rand(2..8).times do
+    holiday_type = holiday_types.sample
+
+    if holiday_type == 'FLO'
+      hotel_id = nil
+      destination_id = Destination.all.sample.id
+    else
+      hotel = Hotel.all.sample
+      hotel_id = hotel.id
+      destination_id = hotel.destination.id
+    end
+
+    rand(1..3).times do
+      Search.create(
+        destination_id: destination_id,
+        adults: rand(1..4),
+        children: rand(0..3),
+        infants: rand(0..2),
+        departure_date: DateTime.now + rand(20..150),
+        nights: rand(4..14),
+        searched_at: DateTime.now - rand(0..10),
+        user_id: user_id,
+        hotel_id: hotel_id,
+        holiday_type: holiday_type
+      )
+    end
+  end
+end
