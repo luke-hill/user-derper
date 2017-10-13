@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @no_users = no_users
   end
 
-  def show; end
+  def show
+    @other_users = users_with_same_destination
+  end
 
   def edit; end
 
@@ -26,6 +28,24 @@ class UsersController < ApplicationController
   end
 
   private
+  
+  def users_with_same_destination
+    user_ids_with_same_destination.map { |id| User.find(id) }.uniq if user_ids_with_same_destination
+  end
+
+  def user_ids_with_same_destination
+    if find_user.last_location
+      all_searches(find_user.last_location.id).map(&:user_id) - own_id
+    end
+  end
+
+  def own_id
+    [params[:id].to_i]
+  end
+
+  def all_searches(dest_id)
+    Search.where(destination_id: dest_id)
+  end
 
   def uk_users
     User.all.where(domain: 'uk')

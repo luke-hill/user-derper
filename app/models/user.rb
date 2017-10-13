@@ -12,22 +12,26 @@ class User < ApplicationRecord
   def last_search_info
     {
       when: last_search.searched_at,
-      where: location,
+      where: last_location.name,
       pax: formatted_pax
     }
   end
   
-  private
-  
-  def location
-    Destination.find(last_search.destination_id).name
+  def last_location
+    Destination.find(last_search.destination_id) if last_search
   end
+
+  def last_search
+    @last_search ||= searches.last
+  end
+  
+  def holidays?
+    holidays.count > 0
+  end
+
+  private
   
   def formatted_pax
     "#{last_search.adults}/#{last_search.children}/#{last_search.infants}"
-  end
-  
-  def last_search
-    @last_search ||= searches.last
   end
 end

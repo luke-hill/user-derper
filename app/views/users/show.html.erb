@@ -13,12 +13,45 @@
   <%= @user.email %>
 </p>
 
-<p>Well hello there - Test - Your last search was...</p>
+<% if @user.last_search %>
+  <p>Well hello there - Test - Your last search was...</p>
+  
+  Where: <%= @user.last_search_info[:where] %> <br />
+  When: <%= @user.last_search_info[:when] %> <br />
+  Pax: <%= @user.last_search_info[:pax] %> <br />
 
-Where: <%= @user.last_search_info[:where] %> <br />
-When: <%= @user.last_search_info[:when] %> <br />
-Pax: <%= @user.last_search_info[:pax] %> <br />
-ALSO WELL DONE FOR BOOKING <span class="important"><%= @user.holidays.count %></span> Holidays with us<br />
+  <% if @user.holidays? %>  
+    ALSO WELL DONE FOR BOOKING <span class="important"><%= @user.holidays.count %></span> Holidays with us<br />
+  <% end %>
+<% else %>
+  You haven't made any searches yet!<br />
+<% end %>
+
+<p>
+  <% if @other_users %>
+    <strong>The other users who also searched for this destination were...</strong><br />
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Domain</th>
+        <th colspan="2"></th>
+      </tr>
+  
+      <% @other_users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.surname %></td>
+          <td><%= user.email %></td>
+          <td><%= render user.flag %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    There were no users who searched here<br />
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', users_path %>
