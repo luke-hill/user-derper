@@ -41,3 +41,7 @@ require_relative 'holiday' #Must be after User and Search
 time_to_do = (Time.now - ref).round(2)
 puts "Search / Holiday data created: #{time_to_do}s"
 puts "****************************************\n\n"
+
+puts "#{Hotel.count} Hotels Created in #{Destination.count} Locations."
+puts "#{User.count} Users created."
+puts "#{Search.count} Searches performed, with #{Holiday.count} being turned into Holidays."
