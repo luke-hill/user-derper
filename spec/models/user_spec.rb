@@ -1,9 +1,9 @@
-require_relative '../../app/models/user'
+require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'a valid user' do
     let(:valid_user) { create(:user) }
-    
+
     it 'has a first name' do
       expect(valid_user.first_name).to eq('Test')
     end

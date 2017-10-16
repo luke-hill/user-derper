@@ -7,4 +7,8 @@ class Search < ApplicationRecord
   def hotel
     Hotel.find(hotel_id) if hotel_id
   end
+  
+  def hotel=(value)
+    self.hotel_id = value
+  end
 end
