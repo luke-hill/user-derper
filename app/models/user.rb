@@ -11,11 +11,8 @@ class User < ApplicationRecord
   end
 
   def user_name
-    first_name.capitalize + ' ' + surname
+    "#{first_name.capitalize} #{surname}"
   end
-
-
-
 
   def last_search_info
     {
@@ -37,15 +34,13 @@ class User < ApplicationRecord
     holidays.count > 0
   end
 
-
-
   def last_holiday_info
     {
       order_id: last_holiday.myb,
       order_date: last_holiday.created_at,
       nights: booked.nights,
       dep_date: booked.departure_date,
-      arr_date: (booked.departure_date + booked.nights),
+      arr_date: return_date,
       hol_type: booked.holiday_type,
       where: booked_location,
       hotel: booked_hotel,
@@ -53,25 +48,24 @@ class User < ApplicationRecord
     }
   end
 
+  def return_date
+    booked.departure_date + booked.nights
+  end
+
   def booked
     booked_search = holidays.last.search_id
     @last_booked = Search.find(booked_search)
   end
 
-
-
-
-  private
-
   def booked_hotel
     Hotel.find(booked.hotel_id).name
   end
 
-  def  booked_location
+  def booked_location
     Destination.find(booked.destination_id).name
   end
 
-  def  booked_formatted_pax
+  def booked_formatted_pax
     "Adults: #{booked.adults} / Children: #{booked.children} / Infants: #{booked.infants}"
   end
 
@@ -79,11 +73,7 @@ class User < ApplicationRecord
     @last_holiday ||= holidays.last
   end
 
-
-
-
   def search_formatted_pax
     "Adults: #{last_search.adults} / Children: #{last_search.children} / Infants: #{last_search.infants}"
   end
-
 end
