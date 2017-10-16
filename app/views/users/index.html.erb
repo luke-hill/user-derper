@@ -1,20 +1,26 @@
-<h1>The User_Derpers List of Magical Users</h1>
+<div class="title">
+  The User_Derpers List of Magical Users</div>
 
-</br>
-We currently have <%= @uk_users.count %> UK Users <br />
-We currently have <%= @se_users.count %> SE Users <br />
-We currently have <%= @no_users.count %> NO Users <br />
+<div class="order-pod">
+  <div class="information-bar">User Details</div>
+  <div class="headed-box">
+    <div class="content">We currently have <%= @uk_users.count %> UK Users </div>
+    <div class="content">We currently have <%= @se_users.count %> SE Users </div>
+    <div class="content">We currently have <%= @no_users.count %> NO Users </div>
+  </div>
+</div>
 
-<h3>Users on On the Beach</h3>
+<div class="order-pod">
+  <div class="information-bar">Users on On the Beach</div>
+<%= will_paginate @users %>
 <table>
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
     <th>Domain</th>
-    <th colspan="2"></th>
+    <th colspan="3">Actions</th>
   </tr>
-
   <% @users.each do |user| %>
     <tr>
       <td><%= user.first_name.capitalize %></td>
@@ -29,3 +35,5 @@ We currently have <%= @no_users.count %> NO Users <br />
     </tr>
   <% end %>
 </table>
+
+</div>

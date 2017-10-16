@@ -1,15 +1,16 @@
-<div class="information-bar">User Details</div>
   <div class="order-pod">
+    <div class="information-bar">User Details</div>
     <div class="headed-box">
       <div class="head">User Name:</div>
         <div class="content"><%= @user.user_name %></div>
       <div class="head">Email:</div>
         <div class="content"><%= @user.email.capitalize %></div>
     </div>
+  </div>
 
-<% if @user.last_search %>
-<div class="information-bar">Last Search</div>
-  <div class="order-pod">
+<div class="order-pod">
+    <div class="information-bar">Last Search</div>
+    <% if @user.last_search %>
     <div class="headed-box">
       <div class="head">Where:</div>
         <div class="content"><%= @user.last_search_info[:where] %></div>
@@ -23,11 +24,11 @@
       </div>
     </div>
 
-<% if @user.holidays? %>
-<div class="information-bar">Last Holiday Booked </div>
-<div class="order-pod">
-  <div class="headed-box">
-    <div class="head">Total Holidays booked: </div>
+  <div class="order-pod">
+    <div class="information-bar">Last Holiday Booked </div>
+    <% if @user.holidays? %>
+    <div class="headed-box">
+      <div class="head">Total Holidays booked: </div>
       <div class="content">
         <span class="important"><%= @user.holidays.count %></span>
       </div>
@@ -52,11 +53,14 @@
           <% else %>
           <div class="head">No holidays booked yet!</div>
           <% end %>
+        </div>
+      </div>
 
-<div class="information-bar">Similar User Searches</div>
-
+<div class="order-pod">
+  <div class="information-bar">Similar User Searches</div>
   <% if @other_users %>
-<div class="head">The other users who also searched for this destination were...</div>
+  <div class="headed-box">
+    <div class="head">The other users who also searched for this destination were...</div>
     <table>
       <tr>
         <th>First Name</th>
@@ -75,10 +79,16 @@
       <% end %>
     </table>
   <% else %>
-    There were no users who searched here<br />
+  <div class="head">  There were no users who searched here </div>
   <% end %>
-</p>
+</div>
+</div>
 
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Back', users_path %>
+<div class="order-pod">
+  <div class="information-bar">Actions</div>
+  <div class="headed-box">
+    <div class="content">
+      <%= link_to 'Edit', edit_user_path(@user) %>
+      <%= link_to 'Back', users_path %></div>
+    </div>
+  </div>
