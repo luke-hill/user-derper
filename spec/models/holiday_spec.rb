@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative '../../app/models/holiday'
 
 RSpec.describe Holiday, type: :model do
   context 'a valid holiday' do
