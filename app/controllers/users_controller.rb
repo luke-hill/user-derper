@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  
   before_action :find_user, only: %i[show edit update destroy]
 
   def index
     @users = User.all
-    @uk_users = uk_users
+    @uk_users = uk_users #TODO: Named scope
     @se_users = se_users
     @no_users = no_users
   end
