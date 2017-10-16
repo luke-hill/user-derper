@@ -2,22 +2,30 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'a valid user' do
-    let(:valid_user) { create(:user) }
+    let(:params) do
+      {
+        first_name: 'Test',
+        surname: 'Testerson',
+        email: 'test@test.com',
+        domain: 'uk'
+      }
+    end
+    let(:valid_user) { create(:user, params) }
 
     it 'has a first name' do
-      expect(valid_user.first_name).to eq('Test')
+      expect(valid_user.first_name).to eq(params[:first_name])
     end
 
     it 'has a surname' do
-      expect(valid_user.surname).to eq('Testerson')
+      expect(valid_user.surname).to eq(params[:surname])
     end
 
     it 'has an email address' do
-      expect(valid_user.email).to eq('test@test.com')
+      expect(valid_user.email).to eq(params[:email])
     end
 
     it 'has a valid domain' do
-      expect(valid_user.domain).to eq('uk')
+      expect(valid_user.domain).to eq(params[:domain])
     end
 
     it 'saves to the database' do
