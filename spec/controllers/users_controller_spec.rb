@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-require_relative '../../app/controllers/users_controller'
-
 RSpec.describe UsersController, type: :controller do
-  let(:valid_user) { User.create(first_name: 'test', surname: 'test', email: 'test@test.com', domain: 'uk') }
+  let(:valid_user) { create(:user) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -34,7 +32,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'PUT #edit' do
-    let(:valid_params) { { first_name: 'test', surname: 'test', email: 'test@test.com', domain: 'uk'} }
+    let(:valid_params) { { first_name: 'test', surname: 'test', email: 'test@test.com', domain: 'uk' } }
 
     it 'returns a success response' do
       put :edit, params: { id: valid_user.id, user: { params: valid_params } }
@@ -68,7 +66,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'with invalid params' do
-      let(:invalid_params) { { first_name: '', surname: '', email: '' , domain: ''} }
+      let(:invalid_params) { { first_name: '', surname: '', email: '', domain: '' } }
 
       it 'will re-render the edit page' do
         put :update, params: { id: valid_user.id, user: invalid_params }
@@ -78,22 +76,19 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     context 'with valid params' do
+      it 'destroys the requested post' do
+        valid_user
 
-    it "destroys the requested post" do
-      user = valid_user
-      expect {delete :destroy, params: { id: user.id } }.to change(User, :count).by(-1)
+        expect { delete :destroy, params: { id: valid_user.id } }.to change { User.count }.by(-1)
+      end
+
+      it 'redirects to the posts list' do
+        delete :destroy, params: { id: valid_user.id }
+
+        expect(response).to redirect_to(users_url)
+      end
     end
-
-    it "redirects to the posts list" do
-      user = valid_user
-      delete :destroy, params: {id: user.id}
-      expect(response).to redirect_to(users_url)
-    end
-
   end
-
-end
-
 end

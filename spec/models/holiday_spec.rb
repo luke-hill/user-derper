@@ -2,20 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Holiday, type: :model do
   context 'a valid holiday' do
-    let(:valid_holiday) do
-      Holiday.create(
-        myb: 'MYB1B',
-        user_id: 11,
-        search_id: 109
-      )
-    end
+    let(:valid_holiday) { create(:holiday) }
 
     it 'has an MYB number' do
-      expect(valid_holiday.myb).to eq('MYB1B')
+      expect(valid_holiday.myb).not_to be_nil
     end
 
     it 'saves to the database' do
-      skip 'Currently broken'
       expect { valid_holiday }.to change { Holiday.count }.by(1)
     end
   end
