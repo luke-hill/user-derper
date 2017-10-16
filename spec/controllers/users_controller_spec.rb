@@ -1,11 +1,7 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-require_relative '../../app/controllers/users_controller'
-
 RSpec.describe UsersController, type: :controller do
-  let(:valid_user) { User.create(first_name: 'test', surname: 'test', email: 'test@test.com', domain: 'uk') }
+  let(:valid_user) { create(:user) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -83,13 +79,14 @@ RSpec.describe UsersController, type: :controller do
   describe 'DELETE #destroy' do
     context 'with valid params' do
       it 'destroys the requested post' do
-        user = valid_user
-        expect { delete :destroy, params: { id: user.id } }.to change(User, :count).by(-1)
+        valid_user
+
+        expect { delete :destroy, params: { id: valid_user.id } }.to change { User.count }.by(-1)
       end
 
       it 'redirects to the posts list' do
-        user = valid_user
-        delete :destroy, params: { id: user.id }
+        delete :destroy, params: { id: valid_user.id }
+
         expect(response).to redirect_to(users_url)
       end
     end
