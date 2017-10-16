@@ -1,49 +1,5 @@
 body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-th {
-  padding-bottom: 5px;
-}
-
-td {
-  padding: 0 5px 7px;
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+  background: image-url('body.jpg');
 }
 
 #notice {
@@ -90,3 +46,77 @@ label {
   border: 2px solid red;
   border-radius: 25%;
 }
+
+
+
+.information-bar {
+  padding: 13px 10px 10px 13px;
+   background-color: #00a5dd;
+   color: #ffffff;
+   min-height: 1em;
+   font-size: 1.0em;
+   font-weight: bold;
+}
+
+.order-pod {
+   background-color: #ffffff;
+   border: 1px solid #00a5dd;
+   color: #17317f;
+   margin-bottom: 1em;
+   overflow: hidden;
+   position: relative;
+}
+
+h4 {
+   display: block;
+   -webkit-margin-before: 1.33em;
+   -webkit-margin-after: 1.33em;
+   -webkit-margin-start: 0px;
+   -webkit-margin-end: 0px;
+   font-weight: bold;
+}
+
+
+.button--secondary {
+   background-color: #00a5dd;
+   border-bottom: 3px solid #0091c2;
+   border-radius: 0.2em;
+   color: #ffffff;
+}
+
+
+.headed-box .head {
+ padding: 13px 10px 13px 16px;
+ background: #efefef;
+ font-size: 1.0em;
+ font-weight: normal;
+}
+.headed-box .head:before,
+.headed-box .head:after {
+ content: " ";
+ display: table;
+}
+.headed-box .head:after { clear: both; }
+.headed-box .head { *zoom: 1; }
+
+.headed-box .content {
+ padding: 18px;
+ background: white;
+ border: solid 1px #e4e4e4;
+ font-size: 14px;
+ color: #777;
+}
+
+table {
+  th {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  }
+  tr, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    }
+    tr:hover {background-color: #f5f5f5}
+  }
