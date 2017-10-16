@@ -46,7 +46,7 @@ Total Holidays booked: <span class="important"><%= @user.holidays.count %></span
 No holidays booked yet!<br />
 <% end %>
 
-<h3>Similar User Searches</h3>
+<h2>Similar User Searches</h2>
 <p>
   <% if @other_users %>
     <strong>The other users who also searched for this destination were...</strong><br />
@@ -61,9 +61,9 @@ No holidays booked yet!<br />
 
       <% @other_users.each do |user| %>
         <tr>
-          <td><%= user.first_name %></td>
+          <td><%= user.first_name.capitalize %></td>
           <td><%= user.surname %></td>
-          <td><%= user.email %></td>
+          <td><%= user.email.capitalize %></td>
           <td><%= render user.flag %></td>
         </tr>
       <% end %>

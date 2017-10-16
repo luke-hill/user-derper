@@ -10,11 +10,15 @@ class User < ApplicationRecord
     "#{domain}_flag"
   end
 
+  def user_name
+    "#{first_name.capitalize} #{surname}"
+  end
+
   def last_search_info
     {
       when: last_search.searched_at,
       where: last_location.name,
-      pax: formatted_pax
+      pax: search_formatted_pax
     }
   end
 
@@ -22,8 +26,12 @@ class User < ApplicationRecord
     Destination.find(last_search.destination_id) if last_search
   end
 
-  def user_name
-    "#{first_name.capitalize} #{surname}"
+  def last_search
+    @last_search ||= searches.last
+  end
+
+  def holidays?
+    holidays.count > 0
   end
 
   def last_holiday_info
@@ -39,7 +47,7 @@ class User < ApplicationRecord
       pax: booked_formatted_pax
     }
   end
-  
+
   def return_date
     booked.departure_date + booked.nights
   end
@@ -61,30 +69,11 @@ class User < ApplicationRecord
     "Adults: #{booked.adults} / Children: #{booked.children} / Infants: #{booked.infants}"
   end
 
-
-  def search_location
-    Destination.find(last_search.destination_id).name
-  end
-
-  def search_formatted_pax
-    "Adults: #{last_search.adults} / Children: #{last_search.children} / Infants: #{last_search.infants}"
-  end
-
-  def last_search
-    @last_search ||= searches.last
-  end
-
   def last_holiday
     @last_holiday ||= holidays.last
   end
 
-  def holidays?
-    holidays.count > 0
-  end
-
-  private
-
-  def formatted_pax
-    "#{last_search.adults}/#{last_search.children}/#{last_search.infants}"
+  def search_formatted_pax
+    "Adults: #{last_search.adults} / Children: #{last_search.children} / Infants: #{last_search.infants}"
   end
 end
