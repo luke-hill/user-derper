@@ -4,11 +4,11 @@ class Search < ApplicationRecord
   belongs_to :destination
   has_one :holiday
 
-  def hotel
+  def self.hotel
     Hotel.find(hotel_id) if hotel_id
   end
-  
-  def hotel=(value)
+
+  def self.hotel=(value)
     self.hotel_id = value
   end
 end

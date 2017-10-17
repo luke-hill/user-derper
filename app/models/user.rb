@@ -44,7 +44,7 @@ class User < ApplicationRecord
 
   def last_holiday_info
     {
-      order_id: last_holiday.myb,
+      myb: last_holiday.myb,
       order_date: last_holiday.created_at,
       nights: booked.nights,
       departure_date: booked.departure_date,
@@ -57,18 +57,22 @@ class User < ApplicationRecord
   end
 
   def time_since_last_login
-    if login_histories.empty? || days_since_last_login > 60
+    if never_logged_in? || days_since_last_login >= 60
       '<span class="warning">User has not logged in recently</span>'.html_safe
     elsif days_since_last_login >= 1
       "#{pluralize(days_hours.first, 'Day')} #{pluralize(days_hours.last, 'Hour')}"
     elsif hours_since_last_login >= 1
-      "#{pluralize(days_hours.last, 'Hour')}"
+      pluralize(days_hours.last, 'Hour').to_s
     else
       'Less than an Hour'
     end
   end
 
   private
+
+  def never_logged_in?
+    login_histories.empty?
+  end
 
   def days_hours
     days = days_since_last_login.to_i

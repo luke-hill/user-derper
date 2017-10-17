@@ -27,12 +27,14 @@ class UsersController < ApplicationController
   private
 
   def users_with_same_destination
-    user_ids_with_same_destination.map { |id| User.find(id) }.uniq if user_ids_with_same_destination
+    user_ids_with_same_destination.uniq.map { |id| User.find(id) }
   end
 
   def user_ids_with_same_destination
     if find_user.last_location
       all_searches(find_user.last_location.id).map(&:user_id) - own_id
+    else
+      []
     end
   end
 

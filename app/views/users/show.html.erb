@@ -35,23 +35,23 @@
         <span class="important"><%= @user.holidays.count %></span>
       </div>
       <div class="head">Order No:</div>
-      <div class="content"> <%= @user.last_holiday_info[:order_id] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:myb] %></div>
       <div class="head">Confirmed On:</div>
-      <div class="content"> <%= @user.last_holiday_info[:order_date] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:order_date] %></div>
       <div class="head">Departure Date:</div>
-      <div class="content"> <%= @user.last_holiday_info[:dep_date] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:departure_date] %></div>
       <div class="head">Duration:</div>
-      <div class="content"> <%= @user.last_holiday_info[:nights] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:nights] %></div>
       <div class="head">Return Date:</div>
-      <div class="content"> <%= @user.last_holiday_info[:arr_date] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:arr_date] %></div>
       <div class="head">Hotel:</div>
-      <div class="content"> <%= @user.last_holiday_info[:hotel] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:hotel] %></div>
       <div class="head">Destination:</div>
-      <div class="content"> <%= @user.last_holiday_info[:where] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:where] %></div>
       <div class="head">Holiday Type:</div>
-      <div class="content"> <%= @user.last_holiday_info[:hol_type] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:hol_type] %></div>
       <div class="head">Passengers:</div>
-      <div class="content"> <%= @user.last_holiday_info[:pax] %> </div>
+      <div class="content"><%= @user.last_holiday_info[:pax] %></div>
     </div>
   <% else %>
     <div class="head">No holidays booked yet!</div>
@@ -62,7 +62,7 @@
   <div class="information-bar">Similar User Searches</div>
   <% if @other_users %>
     <div class="headed-box">
-      <div class="head">The other users who also searched for this destination were...</div>
+      <div class="head">Other users who also searched for this destination were...</div>
       <table>
         <tr>
           <th>First Name</th>
@@ -70,7 +70,7 @@
           <th>Email</th>
           <th>Domain</th>
         </tr>
-  
+
         <% @other_users.each do |user| %>
           <tr>
             <td><%= user.first_name.capitalize %></td>

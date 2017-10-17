@@ -1,5 +1,6 @@
 <div class="title">
-  The User_Derpers List of Magical Users</div>
+  The User_Derpers List of Magical Users
+</div>
 
 <div class="order-pod">
   <div class="information-bar">User Details</div>
@@ -29,10 +30,10 @@
         <td><%= user.email.capitalize %></td>
         <td><%= render user.flag %></td>
         <td><%= link_to 'Show', user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user_path(user),
                 method: :delete,
-                data: {confirm: 'Are you sure?'}%></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>
