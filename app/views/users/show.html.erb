@@ -7,6 +7,9 @@
     <div class="content"><%= @user.email.capitalize %></div>
     <div class="head">Last Logged in:</div>
     <div class="content"><%= @user.time_since_last_login %></div>
+    <div class="head head__total">
+      Total Holidays booked: <span class="important"><%= @user.holidays.count %></span>
+    </div>
   </div>
 </div>
 
@@ -30,8 +33,6 @@
   <div class="information-bar">Last Holiday Booked </div>
   <% if @user.holidays? %>
     <div class="headed-box">
-      <div class="head">Total Holidays booked:</div>
-      <div class="content"><span class="important"><%= @user.holidays.count %></span></div>
       <div class="head">Order No:</div>
       <div class="content"><%= @user.last_holiday_info[:myb] %></div>
       <div class="head">Confirmed On:</div>

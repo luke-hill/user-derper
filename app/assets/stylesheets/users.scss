@@ -136,6 +136,12 @@ h4 {
   font-family: arial;
 }
 
+.head {
+  &__total {
+    text-align: center;
+  }
+}
+
 table {
   th {
     padding: 15px;
