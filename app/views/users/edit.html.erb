@@ -10,13 +10,13 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-  <strong><%= f.label :first_name %>:</strong>
+  <strong><%= f.label :first_name, 'First Name:' %></strong>
   <%= f.text_field :first_name %><br />
 
-  <strong><%= f.label :surname %>:</strong>
+  <strong><%= f.label :surname, 'Surname:' %></strong>
   <%= f.text_field :surname %><br />
 
-  <strong><%= f.label :email %>:</strong>
+  <strong><%= f.label :email, 'Email:' %></strong>
   <%= f.text_field :email %><br />
 
   <%= f.submit %>
