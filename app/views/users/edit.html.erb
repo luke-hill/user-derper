@@ -3,7 +3,7 @@
     <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this user from being updated:</h2>
     <ul>
       <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
       <% end %>
     </ul>
   </div>
@@ -12,13 +12,13 @@
 <%= form_for @user do |f| %>
   <strong><%= f.label :first_name %>:</strong>
   <%= f.text_field :first_name %><br />
-  
+
   <strong><%= f.label :surname %>:</strong>
   <%= f.text_field :surname %><br />
-  
+
   <strong><%= f.label :email %>:</strong>
   <%= f.text_field :email %><br />
-  
+
   <%= f.submit %>
 <% end %>
 
