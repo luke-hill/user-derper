@@ -12,8 +12,9 @@
 
 <div class="order-pod">
   <div class="information-bar">Users on On the Beach</div>
-  <%= will_paginate @users %>
-  <table>
+<div class="flickr_pagination"><%= will_paginate @users %></div>
+<table>
+  <% @users.each do |user| %>
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -21,7 +22,7 @@
       <th>Domain</th>
       <th colspan="3">Actions</th>
     </tr>
-    
+
     <% @users.each do |user| %>
       <tr>
         <td><%= user.first_name.capitalize %></td>
