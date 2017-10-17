@@ -1,78 +1,95 @@
+<div class="order-pod">
+  <div class="information-bar">User Details</div>
+  <div class="headed-box">
+    <div class="head">User Name:</div>
+    <div class="content"><%= @user.user_name %></div>
+    <div class="head">Email:</div>
+    <div class="content"><%= @user.email.capitalize %></div>
+  </div>
+</div>
 
-<h2>User Details</h2>
-<p>
-  <strong>User Name:</strong>
-  <%= @user.user_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email.capitalize %>
-</p>
-
-<% if @user.last_search %>
-
-<h2>Last Search</h2>
-
-<strong>Where:</strong> <%= @user.last_search_info[:where] %> <br />
-<strong>When: </strong><%= @user.last_search_info[:when] %> <br />
-<strong>Pax:</strong> <%= @user.last_search_info[:pax] %> <br />
-
-<% else %>
-No searches made yet!<br />
-<% end %>
-
-<% if @user.holidays? %>
-
-<h2> Last Holiday Booked </h2>
-
-Total Holidays booked: <span class="important"><%= @user.holidays.count %></span>
-<br>
-<br>
-<strong>Order No:</strong> <%= @user.last_holiday_info[:order_id] %> <br>
-<strong>Confirmed On:</strong> <%= @user.last_holiday_info[:order_date] %> <br>
-<br>
-<strong>Departure Date:</strong> <%= @user.last_holiday_info[:dep_date] %> <br>
-<strong>Duration:</strong> <%= @user.last_holiday_info[:nights] %> <br>
-<strong>Return Date:</strong> <%= @user.last_holiday_info[:arr_date] %> <br>
-<br>
-<strong>Hotel:</strong> <%= @user.last_holiday_info[:hotel] %> <br>
-<strong>Destination:</strong> <%= @user.last_holiday_info[:where] %> <br>
-<br>
-<strong>Holiday Type:</strong> <%= @user.last_holiday_info[:hol_type] %> <br>
-<strong>Passengers:</strong> <%= @user.last_holiday_info[:pax] %> <br>
-<br>
-<% else %>
-No holidays booked yet!<br />
-<% end %>
-
-<h2>Similar User Searches</h2>
-<p>
-  <% if @other_users %>
-    <strong>The other users who also searched for this destination were...</strong><br />
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Domain</th>
-        <th colspan="2"></th>
-      </tr>
-
-      <% @other_users.each do |user| %>
-        <tr>
-          <td><%= user.first_name.capitalize %></td>
-          <td><%= user.surname %></td>
-          <td><%= user.email.capitalize %></td>
-          <td><%= render user.flag %></td>
-        </tr>
-      <% end %>
-    </table>
+<div class="order-pod">
+  <div class="information-bar">Last Search</div>
+  <% if @user.last_search %>
+    <div class="headed-box">
+      <div class="head">Where:</div>
+      <div class="content"><%= @user.last_search_info[:where] %></div>
+      <div class="head">When: </div>
+      <div class="content"><%= @user.last_search_info[:when] %></div>
+      <div class="head">Pax:</div>
+      <div class="content"><%= @user.last_search_info[:pax] %></div>
+    </div>
   <% else %>
-    There were no users who searched here<br />
+    <div class="head">No searches made yet!</div>
   <% end %>
-</p>
+</div>
 
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Back', users_path %>
+<div class="order-pod">
+  <div class="information-bar">Last Holiday Booked </div>
+  <% if @user.holidays? %>
+    <div class="headed-box">
+      <div class="head">Total Holidays booked: </div>
+      <div class="content">
+        <span class="important"><%= @user.holidays.count %></span>
+      </div>
+      <div class="head">Order No:</div>
+      <div class="content"> <%= @user.last_holiday_info[:order_id] %> </div>
+      <div class="head">Confirmed On:</div>
+      <div class="content"> <%= @user.last_holiday_info[:order_date] %> </div>
+      <div class="head">Departure Date:</div>
+      <div class="content"> <%= @user.last_holiday_info[:dep_date] %> </div>
+      <div class="head">Duration:</div>
+      <div class="content"> <%= @user.last_holiday_info[:nights] %> </div>
+      <div class="head">Return Date:</div>
+      <div class="content"> <%= @user.last_holiday_info[:arr_date] %> </div>
+      <div class="head">Hotel:</div>
+      <div class="content"> <%= @user.last_holiday_info[:hotel] %> </div>
+      <div class="head">Destination:</div>
+      <div class="content"> <%= @user.last_holiday_info[:where] %> </div>
+      <div class="head">Holiday Type:</div>
+      <div class="content"> <%= @user.last_holiday_info[:hol_type] %> </div>
+      <div class="head">Passengers:</div>
+      <div class="content"> <%= @user.last_holiday_info[:pax] %> </div>
+    </div>
+  <% else %>
+    <div class="head">No holidays booked yet!</div>
+  <% end %>
+</div>
+
+<div class="order-pod">
+  <div class="information-bar">Similar User Searches</div>
+  <% if @other_users %>
+    <div class="headed-box">
+      <div class="head">The other users who also searched for this destination were...</div>
+      <table>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Domain</th>
+        </tr>
+  
+        <% @other_users.each do |user| %>
+          <tr>
+            <td><%= user.first_name.capitalize %></td>
+            <td><%= user.surname %></td>
+            <td><%= user.email.capitalize %></td>
+            <td><%= render user.flag %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <div class="head">There were no users who searched here</div>
+  <% end %>
+</div>
+
+<div class="order-pod">
+  <div class="information-bar">Actions</div>
+  <div class="headed-box">
+    <div class="content">
+      <%= link_to 'Edit', edit_user_path(@user) %>
+      <%= link_to 'Back', users_path %>
+    </div>
+  </div>
+</div>
