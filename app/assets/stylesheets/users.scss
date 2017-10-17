@@ -1,49 +1,7 @@
 body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-th {
-  padding-bottom: 5px;
-}
-
-td {
-  padding: 0 5px 7px;
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+  background: image-url('body.jpg');
+  background-size: 100% 75%;
+  background-repeat: no-repeat;
 }
 
 #notice {
@@ -71,6 +29,7 @@ div {
     margin: -7px -7px 0;
     background-color: #c00;
     color: #fff;
+    font-family: arial;
   }
 
   ul li {
@@ -89,8 +48,181 @@ label {
   padding: 2px;
   border: 2px solid red;
   border-radius: 25%;
+  font-family: arial;
 }
 
 .warning {
   color: red;
+}
+
+.title {
+  margin: 50px 100px;
+  padding: 13px 10px 10px 13px;
+  background-color: #17317f;
+  color: #ffffff;
+  min-height: 1em;
+  font-size: 1.0em;
+  font-weight: bold;
+  font-family: arial;
+}
+
+.information-bar {
+  padding: 13px 10px 10px 13px;
+  background-color: #00a5dd;
+  color: #ffffff;
+  min-height: 1em;
+  font-size: 1.0em;
+  font-weight: bold;
+  font-family: arial;
+}
+
+.order-pod {
+  margin: 50px 100px;
+  background-color: #ffffff;
+  border: 1px solid #00a5dd;
+  color: #17317f;
+  overflow: hidden;
+  position: relative;
+  font-family: arial;
+}
+
+h4 {
+  display: block;
+  -webkit-margin-before: 1.33em;
+  -webkit-margin-after: 1.33em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+  font-family: arial;
+}
+
+.button--secondary {
+  background-color: #00a5dd;
+  border-bottom: 3px solid #0091c2;
+  border-radius: 0.2em;
+  color: #ffffff;
+  font-family: arial;
+}
+
+.headed-box .head {
+  padding: 13px 10px 13px 16px;
+  background: #efefef;
+  font-size: 1.0em;
+  font-weight: normal;
+  font-family: arial;
+}
+
+.headed-box .head {
+  *zoom: 1;
+}
+
+.headed-box .head:before,
+.headed-box .head:after {
+  content: " ";
+  display: table;
+  font-family: arial;
+}
+
+.headed-box .head:after {
+  clear: both;
+}
+
+.headed-box .content {
+  padding: 18px;
+  background: white;
+  border: solid 1px #e4e4e4;
+  font-size: 14px;
+  color: #777;
+  font-family: arial;
+}
+
+table {
+  th {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    background-color: #fedc07;
+    font-family: arial;
+  }
+  
+  td {
+    width: 32%;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-family: arial;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5
+  };
+  
+  tr:nth-child(even) {
+    background-color: rgba(221,246,255,0.9)
+  };
+}
+
+.flickr_pagination {
+  text-align: center;
+  background: #dfdfdf;
+  cursor: default; 
+}
+.flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+  padding: 0.2em 0.5em;
+}
+
+.flickr_pagination .disabled {
+  color: #aaaaaa;
+}
+
+.flickr_pagination .current {
+  display: inline-block;
+  padding: 0px 9px;
+  margin-right: 4px;
+  border-radius: 3px;
+  border: solid 1px #c0c0c0;
+  background: #c8c8c8;
+  box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.5), 0px 1px 3px rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  text-decoration: none;
+  color: #ff0084;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.flickr_pagination a {
+  display: inline-block;
+  padding: 0px 9px;
+  margin-right: 4px;
+  border-radius: 3px;
+  border: solid 1px #c0c0c0;
+  background: #00a5dd;
+  box-shadow: inset 0px 1px 0px rgba(0, 145, 194, 0.8), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: .875em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #17317f;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 1);
+}
+
+.flickr_pagination a:hover, .flickr_pagination a:focus {
+  border-color: #003366;
+  background: #0063dc;
+  color: white;
+}
+
+.flickr_pagination .page_info {
+  color: #aaaaaa;
+  padding-top: 0.8em;
+}
+
+.flickr_pagination .previous_page, .flickr_pagination .next_page {
+  border-width: 2px;
+}
+
+.flickr_pagination .previous_page {
+  margin-right: 1em;
+}
+
+.flickr_pagination .next_page {
+  margin-left: 1em;
 }

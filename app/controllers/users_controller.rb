@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 15)
     @uk_users = uk_users #TODO: Named scope
     @se_users = se_users
     @no_users = no_users
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def users_with_same_destination
     user_ids_with_same_destination.map { |id| User.find(id) }.uniq if user_ids_with_same_destination
   end
