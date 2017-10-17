@@ -32,14 +32,14 @@ Total Holidays booked: <span class="important"><%= @user.holidays.count %></span
 <strong>Order No:</strong> <%= @user.last_holiday_info[:order_id] %> <br>
 <strong>Confirmed On:</strong> <%= @user.last_holiday_info[:order_date] %> <br>
 <br>
-<strong>Departure Date:</strong> <%= @user.last_holiday_info[:dep_date] %> <br>
+<strong>Departure Date:</strong> <%= @user.last_holiday_info[:departure_date] %> <br>
 <strong>Duration:</strong> <%= @user.last_holiday_info[:nights] %> <br>
-<strong>Return Date:</strong> <%= @user.last_holiday_info[:arr_date] %> <br>
+<strong>Return Date:</strong> <%= @user.last_holiday_info[:return_date] %> <br>
 <br>
 <strong>Hotel:</strong> <%= @user.last_holiday_info[:hotel] %> <br>
 <strong>Destination:</strong> <%= @user.last_holiday_info[:where] %> <br>
 <br>
-<strong>Holiday Type:</strong> <%= @user.last_holiday_info[:hol_type] %> <br>
+<strong>Holiday Type:</strong> <%= @user.last_holiday_info[:type] %> <br>
 <strong>Passengers:</strong> <%= @user.last_holiday_info[:pax] %> <br>
 <br>
 <% else %>

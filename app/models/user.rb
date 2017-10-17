@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def holidays?
-    holidays.count > 0
+    holidays.count.positive?
   end
 
   def last_holiday_info
@@ -39,14 +39,16 @@ class User < ApplicationRecord
       order_id: last_holiday.myb,
       order_date: last_holiday.created_at,
       nights: booked.nights,
-      dep_date: booked.departure_date,
-      arr_date: return_date,
-      hol_type: booked.holiday_type,
+      departure_date: booked.departure_date,
+      return_date: return_date,
+      type: booked.holiday_type,
       where: booked_location,
       hotel: booked_hotel,
       pax: booked_formatted_pax
     }
   end
+
+  private
 
   def return_date
     booked.departure_date + booked.nights
