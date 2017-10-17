@@ -43,17 +43,18 @@ class User < ApplicationRecord
   end
 
   def last_holiday_info
-    {
-      myb: last_holiday.myb,
-      order_date: last_holiday.created_at,
-      nights: booked.nights,
-      departure_date: booked.departure_date,
-      return_date: return_date,
-      type: booked.holiday_type,
-      where: booked_location,
-      hotel: booked_hotel,
-      pax: booked_formatted_pax
-    }
+    @last_holiday_info ||=
+      {
+        myb: last_holiday.myb,
+        order_date: last_holiday.created_at,
+        nights: booked.nights,
+        departure_date: booked.departure_date,
+        return_date: return_date,
+        type: booked.holiday_type,
+        where: booked_location,
+        hotel: booked_hotel,
+        pax: booked_formatted_pax
+      }
   end
 
   def time_since_last_login
@@ -66,6 +67,10 @@ class User < ApplicationRecord
     else
       'Less than an Hour'
     end
+  end
+
+  def last_holiday_flo?
+    booked.holiday_type == 'FLO'
   end
 
   private
@@ -101,7 +106,11 @@ class User < ApplicationRecord
   end
 
   def booked_hotel
-    Hotel.find(booked.hotel_id).name
+    if last_holiday_flo?
+      'No Hotel'
+    else
+      Hotel.find(booked.hotel_id).name
+    end
   end
 
   def booked_location
