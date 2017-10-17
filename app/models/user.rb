@@ -1,9 +1,15 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :holidays
   has_many :searches
   has_many :login_histories
-  
+
   include ActionView::Helpers
+
+  scope :uk, -> { where(domain: 'uk') }
+  scope :se, -> { where(domain: 'se') }
+  scope :no, -> { where(domain: 'no') }
 
   validates_presence_of :first_name, :surname, :email
   validates :domain, format: { with: /\A(uk|se|no)\z/, message: 'is invalid' }
@@ -52,7 +58,7 @@ class User < ApplicationRecord
 
   def time_since_last_login
     if login_histories.empty? || days_since_last_login > 60
-      "<span class=\"warning\">User has not logged in recently</span>".html_safe
+      '<span class="warning">User has not logged in recently</span>'.html_safe
     elsif days_since_last_login >= 1
       "#{pluralize(days_hours.first, 'Day')} #{pluralize(days_hours.last, 'Hour')}"
     elsif hours_since_last_login >= 1
