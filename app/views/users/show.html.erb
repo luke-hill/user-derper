@@ -30,10 +30,8 @@
   <div class="information-bar">Last Holiday Booked </div>
   <% if @user.holidays? %>
     <div class="headed-box">
-      <div class="head">Total Holidays booked: </div>
-      <div class="content">
-        <span class="important"><%= @user.holidays.count %></span>
-      </div>
+      <div class="head">Total Holidays booked:</div>
+      <div class="content"><span class="important"><%= @user.holidays.count %></span></div>
       <div class="head">Order No:</div>
       <div class="content"><%= @user.last_holiday_info[:myb] %></div>
       <div class="head">Confirmed On:</div>
@@ -43,13 +41,15 @@
       <div class="head">Duration:</div>
       <div class="content"><%= @user.last_holiday_info[:nights] %></div>
       <div class="head">Return Date:</div>
-      <div class="content"><%= @user.last_holiday_info[:arr_date] %></div>
-      <div class="head">Hotel:</div>
-      <div class="content"><%= @user.last_holiday_info[:hotel] %></div>
+      <div class="content"><%= @user.last_holiday_info[:return_date] %></div>
+      <% unless @user.last_holiday_flo? %>
+        <div class="head">Hotel:</div>
+        <div class="content"><%= @user.last_holiday_info[:hotel] %></div>
+      <% end %>
       <div class="head">Destination:</div>
       <div class="content"><%= @user.last_holiday_info[:where] %></div>
       <div class="head">Holiday Type:</div>
-      <div class="content"><%= @user.last_holiday_info[:hol_type] %></div>
+      <div class="content"><%= @user.last_holiday_info[:type] %></div>
       <div class="head">Passengers:</div>
       <div class="content"><%= @user.last_holiday_info[:pax] %></div>
     </div>
