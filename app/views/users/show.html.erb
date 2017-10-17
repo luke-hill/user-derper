@@ -10,6 +10,11 @@
   <%= @user.email.capitalize %>
 </p>
 
+<p>
+  <strong>Last Logged in:</strong>
+  <%= @user.time_since_last_login %>
+</p>
+
 <% if @user.last_search %>
 
 <h2>Last Search</h2>
