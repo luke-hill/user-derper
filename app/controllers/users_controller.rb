@@ -3,9 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 15)
-    @uk_users = uk_users #TODO: Named scope
-    @se_users = se_users
-    @no_users = no_users
   end
 
   def show
@@ -45,18 +42,6 @@ class UsersController < ApplicationController
 
   def all_searches(dest_id)
     Search.where(destination_id: dest_id)
-  end
-
-  def uk_users
-    User.all.where(domain: 'uk')
-  end
-
-  def se_users
-    User.all.where(domain: 'se')
-  end
-
-  def no_users
-    User.all.where(domain: 'no')
   end
 
   def user_params
