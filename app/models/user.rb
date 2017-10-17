@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :holidays
   has_many :searches
   has_many :login_histories
+  
+  include ActionView::Helpers
 
   validates_presence_of :first_name, :surname, :email
   validates :domain, format: { with: /\A(uk|se|no)\z/, message: 'is invalid' }
@@ -31,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def holidays?
-    holidays.count > 0
+    holidays.count.positive?
   end
 
   def last_holiday_info
@@ -39,13 +41,45 @@ class User < ApplicationRecord
       order_id: last_holiday.myb,
       order_date: last_holiday.created_at,
       nights: booked.nights,
-      dep_date: booked.departure_date,
-      arr_date: return_date,
-      hol_type: booked.holiday_type,
+      departure_date: booked.departure_date,
+      return_date: return_date,
+      type: booked.holiday_type,
       where: booked_location,
       hotel: booked_hotel,
       pax: booked_formatted_pax
     }
+  end
+
+  def time_since_last_login
+    if login_histories.empty? || days_since_last_login > 60
+      "<span class=\"warning\">User has not logged in recently</span>".html_safe
+    elsif days_since_last_login >= 1
+      "#{pluralize(days_hours.first, 'Day')} #{pluralize(days_hours.last, 'Hour')}"
+    elsif hours_since_last_login >= 1
+      "#{pluralize(days_hours.last, 'Hour')}"
+    else
+      'Less than an Hour'
+    end
+  end
+
+  private
+
+  def days_hours
+    days = days_since_last_login.to_i
+    hours = (hours_since_last_login - (hours_in_day * days)).to_i
+    [days, hours]
+  end
+
+  def hours_since_last_login
+    days_since_last_login * hours_in_day
+  end
+
+  def days_since_last_login
+    (DateTime.now - last_login_date.to_datetime)
+  end
+
+  def last_login_date
+    login_histories.last.logged_in
   end
 
   def return_date
@@ -53,8 +87,7 @@ class User < ApplicationRecord
   end
 
   def booked
-    booked_search = holidays.last.search_id
-    @last_booked = Search.find(booked_search)
+    @booked ||= Search.find(holidays.last.search_id)
   end
 
   def booked_hotel
