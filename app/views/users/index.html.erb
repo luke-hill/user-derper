@@ -42,10 +42,10 @@
 RAW DATA DUMPS TO BE DELETED LATER<br />
 feed
 <%= line_chart User.group_by_day(:created_at).count %> <br />
-<%= line_chart LoginHistory.group_by_day(:logged_in).count %><br />
+<%= line_chart LoginHistory.group_by_day(:logged_in).count, xtitle: 'Day', ytitle: "Count" %><br />
 <%= pie_chart User.group(:domain).count %><br />
 <%= column_chart Search.group_by_day_of_week(:departure_date, format: "%a").count,
-                 id: "column-chart-idhere-1", width: "800px", height: "500px" %><br />
+                 id: 'column-chart-idhere-1', width: "800px", height: "500px" %><br />
 create
 <%= pie_chart({"Football" => 10, "Basketball" => 5}) %><br />
 THIS NEEDS THE GOOGLE JS API
