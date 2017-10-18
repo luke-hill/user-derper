@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 maldives = Destination.find_by_name('Maldives')
 male = Destination.find_by_name('Male')
 mauritius = Destination.find_by_name('Mauritius')

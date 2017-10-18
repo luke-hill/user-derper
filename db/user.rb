@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 User.create(first_name: 'Test', surname: 'Test', email: 'test@test.com', domain: 'uk')
 User.create(first_name: 'WILLIAM', surname: 'Corbyn', email: 'WILLIAM.Corbyn@hotmail.com', domain: 'uk')
 User.create(first_name: 'JOHN', surname: 'Smith', email: 'JOHN.Smith@hotmail.com', domain: 'se')
