@@ -11,6 +11,63 @@
   </div>
 </div>
 
+<div class="order-pod"><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<div class="information-bar">Date Search</div>
+   <script>
+  $( function() {
+    var dateFormat = "yyyy-mm-dd",
+      from = $( "#from" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 2
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
+  </script>
+</head>
+<body>
+  <div class="headed-box">
+    <% require 'date' %>
+    <%= form_tag users_path, :method => "get"  do |f| %>
+      <div class="content"><label for="from">From:</label>
+      <input type="string" id="from" name="created_at_from"/></div>
+      <div class="content"><label for="to">To:</label>
+      <input type="string" id="to" name="created_at_to"/></div>
+      <div class="content"><%= submit_tag "Select Date" %></div>
+      <% end %>
+  </body>
+  </html>
+  </div>
+</div>
+
 <div class="order-pod">
   <div class="information-bar">Users on On the Beach</div>
   <div class="pagination"><%= will_paginate @users %></div>
