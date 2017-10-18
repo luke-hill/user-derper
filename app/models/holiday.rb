@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Holiday < ApplicationRecord
   belongs_to :user
   belongs_to :search
-  
-  validates_presence_of :myb, :user_id, :search_id
+
+  validates :myb, :user_id, :search_id, presence: true
 end

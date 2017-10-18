@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTables < ActiveRecord::Migration[5.1]
   def up
     create_table :hotels do |t|
@@ -10,5 +12,4 @@ class CreateTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
   end
-
 end
