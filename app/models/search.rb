@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Search < ApplicationRecord
   belongs_to :user
-  #belongs_to :hotel #Possibly broken? - Monkeypatched in!
+  # belongs_to :hotel #Possibly broken? - Monkeypatched in!
   belongs_to :destination
   has_one :holiday
 
