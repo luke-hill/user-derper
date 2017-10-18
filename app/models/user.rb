@@ -11,7 +11,7 @@ class User < ApplicationRecord
   scope :se, -> { where(domain: 'se') }
   scope :no, -> { where(domain: 'no') }
 
-  validates_presence_of :first_name, :surname, :email
+  validates :first_name, :surname, :email, presence: true
   validates :domain, format: { with: /\A(uk|se|no)\z/, message: 'is invalid' }
 
   def flag

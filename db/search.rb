@@ -1,22 +1,24 @@
-holiday_types = %w{F+H FLO HTO}
+# frozen_string_literal: true
 
-user_one_id = User.find_by_email('test@test.com').id #uk
-user_two_id = User.find_by_email('WILLIAM.Corbyn@hotmail.com').id #uk
-user_three_id = User.find_by_email('JOHN.Smith@hotmail.com').id #se
-user_four_id = User.find_by_email('JOSEPH.Walker@hotmail.com').id #uk
-user_five_id = User.find_by_email('FRANK.Robinson@hotmail.com').id #uk
-user_six_id = User.find_by_email('HARRY.Hughes@hotmail.com').id #no
-user_seven_id = User.find_by_email('DAVID.Scott@hotmail.com').id #no
-user_eight_id = User.find_by_email('JACK.Morgan@hotmail.com').id #no
-user_nine_id = User.find_by_email('GILBERT.Collins@hotmail.com').id #uk
-user_ten_id = User.find_by_email('HUBERT.Carter@hotmail.com').id #se
-user_eleven_id = User.find_by_email('MARTIN.Hunt@hotmail.com').id #uk
-user_twelve_id = User.find_by_email('LIONEL.Holmes@hotmail.com').id #se
-user_thirteen_id = User.find_by_email('DENNIS.Mills@hotmail.com').id #no
-user_fourteen_id = User.find_by_email('EVAN.Owen@hotmail.com').id #uk
-user_fifteen_id = User.find_by_email('HECTOR.Palmer@hotmail.com').id #se
-user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
-#7 * UK User / 4 * SE User / 5 * NO User -> 16 Users in Total
+holiday_types = %w[F+H FLO HTO]
+
+user_one_id = User.find_by(email: 'test@test.com').id # uk
+user_two_id = User.find_by(email: 'WILLIAM.Corbyn@hotmail.com').id # uk
+user_three_id = User.find_by(email: 'JOHN.Smith@hotmail.com').id # se
+user_four_id = User.find_by(email: 'JOSEPH.Walker@hotmail.com').id # uk
+user_five_id = User.find_by(email: 'FRANK.Robinson@hotmail.com').id # uk
+user_six_id = User.find_by(email: 'HARRY.Hughes@hotmail.com').id # no
+user_seven_id = User.find_by(email: 'DAVID.Scott@hotmail.com').id # no
+user_eight_id = User.find_by(email: 'JACK.Morgan@hotmail.com').id # no
+user_nine_id = User.find_by(email: 'GILBERT.Collins@hotmail.com').id # uk
+user_ten_id = User.find_by(email: 'HUBERT.Carter@hotmail.com').id # se
+user_eleven_id = User.find_by(email: 'MARTIN.Hunt@hotmail.com').id # uk
+user_twelve_id = User.find_by(email: 'LIONEL.Holmes@hotmail.com').id # se
+user_thirteen_id = User.find_by(email: 'DENNIS.Mills@hotmail.com').id # no
+user_fourteen_id = User.find_by(email: 'EVAN.Owen@hotmail.com').id # uk
+user_fifteen_id = User.find_by(email: 'HECTOR.Palmer@hotmail.com').id # se
+user_sixteen_id = User.find_by(email: 'ALEC.Matthews@hotmail.com').id # no
+# 7 * UK User / 4 * SE User / 5 * NO User -> 16 Users in Total
 
 100.times do |value|
   holiday_type = holiday_types.sample
@@ -29,7 +31,7 @@ user_sixteen_id = User.find_by_email('ALEC.Matthews@hotmail.com').id #no
     hotel_id = hotel.id
     destination_id = hotel.destination.id
   end
-  
+
   case value
   when 0..9
     Search.create(
