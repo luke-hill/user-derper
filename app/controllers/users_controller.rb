@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:created_at_from] && params[:created_at_to]
-      @users = User.where("date(created_at) between ? and ?", created_at_from, created_at_to).paginate(page: params[:page], per_page: 15)
+      @users = User.where('date(created_at) between ? and ?', created_at_from, created_at_to).paginate(page: params[:page], per_page: 15)
     elsif params[:search]
       @users = User.search(params[:search]).paginate(page: params[:page], per_page: 15)
     else
@@ -30,6 +30,13 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_path
+  end
+
+  def destroy_multiple
+    @users = User.find(params[:user_ids])
+    @users.destroy_all
+
+    redirect_to root_path
   end
 
   private
