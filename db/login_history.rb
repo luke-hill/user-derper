@@ -27,6 +27,10 @@ users =
 
 users.each do |user|
   r = rand
+  LoginHistory.create(user_id: user, logged_in: DateTime.now - 15) if r < 0.3
+  LoginHistory.create(user_id: user, logged_in: DateTime.now - 13.3) if r < 0.1
+  LoginHistory.create(user_id: user, logged_in: DateTime.now - 12) if r < 0.8
+  LoginHistory.create(user_id: user, logged_in: DateTime.now - 11.1) if r < 0.9
   LoginHistory.create(user_id: user, logged_in: DateTime.now - 8) if r < 0.8
   LoginHistory.create(user_id: user, logged_in: DateTime.now - 7.5) if r < 0.5
   LoginHistory.create(user_id: user, logged_in: DateTime.now - 6) if r < 0.2

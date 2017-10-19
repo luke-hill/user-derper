@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 
   def index
     if params[:created_at_from] && params[:created_at_to]
-      @users = User.where("date(created_at) between ? and ?", created_at_from, created_at_to).paginate(page: params[:page], per_page: 15)
+      @users = User.where(
+        'date(created_at) between ? and ?', created_at_from, created_at_to
+      ).paginate(page: params[:page], per_page: 15)
     else
       @users = User.all.paginate(page: params[:page], per_page: 15)
     end
@@ -61,11 +63,10 @@ class UsersController < ApplicationController
   end
 
   def created_at_to
-    Date.strptime(params[:created_at_to], "%m/%d/%Y")
+    Date.strptime(params[:created_at_to], '%m/%d/%Y')
   end
 
   def created_at_from
-    Date.strptime(params[:created_at_from], "%m/%d/%Y")
+    Date.strptime(params[:created_at_from], '%m/%d/%Y')
   end
-
 end
