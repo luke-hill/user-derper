@@ -2,6 +2,8 @@ AllCops:
   Include:
     - '**/config.ru'
   Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
     - 'db/**/*'
     - 'config/environments/*'
     - 'spec/spec_helper.rb'
@@ -9,4 +11,4 @@ AllCops:
 Documentation:
   Enabled: false
 
-#49Files / 20Offenses
+#48Files / 11Offenses
