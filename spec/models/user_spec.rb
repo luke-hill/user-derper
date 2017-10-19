@@ -3,17 +3,49 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'a valid user' do
-    let(:params) do
-      {
-        first_name: 'Test',
-        surname: 'Testerson',
-        email: 'test@test.com',
-        domain: 'uk'
-      }
-    end
-    let(:valid_user) { create(:user, params) }
+  let(:no_name) do
+    User.create(
+      first_name: '',
+      surname: 'Testerson',
+      email: 'test@test.com',
+      domain: 'uk'
+    )
+  end
+  let(:no_surname) do
+    User.create(
+      first_name: 'Test',
+      surname: '',
+      email: 'test@test.com',
+      domain: 'uk'
+    )
+  end
+  let(:no_email) do
+    User.create(
+      first_name: 'Test',
+      surname: 'Testerson',
+      email: '',
+      domain: 'uk'
+    )
+  end
+  let(:invalid_domain) do
+    User.create(
+      first_name: 'Test',
+      surname: 'Testerson',
+      email: 'test@test.com',
+      domain: 'engerland'
+    )
+  end
+  let(:params) do
+    {
+      first_name: 'Test',
+      surname: 'Testerson',
+      email: 'test@test.com',
+      domain: 'uk'
+    }
+  end
+  let(:valid_user) { create(:user, params) }
 
+  context 'a valid user' do
     it 'has a first name' do
       expect(valid_user.first_name).to eq(params[:first_name])
     end
@@ -36,11 +68,6 @@ RSpec.describe User, type: :model do
   end
 
   context 'an invalid user' do
-    let(:no_name) { User.create(first_name: '', surname: 'Testerson', email: 'test@test.com', domain: 'uk') }
-    let(:no_surname) { User.create(first_name: 'Test', surname: '', email: 'test@test.com', domain: 'uk') }
-    let(:no_email) { User.create(first_name: 'Test', surname: 'Testerson', email: '', domain: 'uk') }
-    let(:invalid_domain) { User.create(first_name: 'Test', surname: 'Testerson', email: '', domain: 'engerland') }
-
     it 'must have a first name' do
       expect(no_name.errors).to have_key(:first_name)
     end

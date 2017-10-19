@@ -65,20 +65,4 @@
   </table>
 </div>
 
-RAW DATA DUMPS TO BE DELETED LATER<br />
-feed
-<%= line_chart User.group_by_day(:created_at).count %> <br />
-<%= line_chart LoginHistory.group_by_day(:logged_in).count %><br />
-<%= pie_chart User.group(:domain).count %><br />
-<%= column_chart Search.group_by_day_of_week(:departure_date, format: "%a").count,
-                 id: "column-chart-idhere-1", width: "800px", height: "500px" %><br />
-create
-<%= pie_chart({"Football" => 10, "Basketball" => 5}) %><br />
-THIS NEEDS THE GOOGLE JS API
-<%= timeline [
-                 ["Washington", "1789-04-29", "1797-03-03"],
-                 ["Adams", "1797-03-03", "1801-03-03"],
-                 ["Jefferson", "1801-03-03", "1809-03-03"]
-             ] %><br />
-new route
-<%= line_chart login_histories_charts_path %>
+<%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
