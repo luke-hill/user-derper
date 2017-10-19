@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'charts/login_histories', to: 'charts#login_histories'
 
   root 'users#index'
+
+  resources :login_histories_charts
 end
