@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 15)
+    if params[:created_at_from] && params[:created_at_to]
+      @users = User.where("date(created_at) between ? and ?", created_at_from, created_at_to).paginate(page: params[:page], per_page: 15)
+    else
+      @users = User.all.paginate(page: params[:page], per_page: 15)
+    end
   end
 
   def show
@@ -55,4 +59,13 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
+
+  def created_at_to
+    Date.strptime(params[:created_at_to], "%m/%d/%Y")
+  end
+
+  def created_at_from
+    Date.strptime(params[:created_at_from], "%m/%d/%Y")
+  end
+
 end

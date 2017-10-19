@@ -1,3 +1,4 @@
+
 <div class="title">
   The User_Derpers List of Magical Users
 </div>
@@ -8,6 +9,21 @@
     <div class="content">We currently have <%= @users.uk.count %> UK Users registered</div>
     <div class="content">We currently have <%= @users.se.count %> SE Users registered</div>
     <div class="content">We currently have <%= @users.no.count %> NO Users registered</div>
+  </div>
+</div>
+
+
+<div class="order-pod">
+  <div class="information-bar">Search</div>
+  <div class="headed-box">
+    <% require 'date' %>
+    <%= form_tag users_path, method: 'get' do |f| %>
+      <div class="content"><label for="from">From:</label>
+      <input type="string" id="from" name="created_at_from"/></div>
+      <div class="content"><label for="to">To:</label>
+      <input type="string" id="to" name="created_at_to"/></div>
+      <div class="content"><%= submit_tag "Select Date" %></div>
+    <% end %>
   </div>
 </div>
 
