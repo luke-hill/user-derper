@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class ChartsController < ApplicationController
   def login_histories
