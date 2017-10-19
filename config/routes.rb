@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
   resources :users
 
-  root 'users#index'
+  resources :charts
+  get 'charts/login_histories', to: 'charts#login_histories'
 
-  resources :login_histories_charts
+  root 'users#index'
 end

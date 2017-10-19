@@ -57,5 +57,6 @@
 
 <%= line_chart LoginHistory.group_by_day(:logged_in).count, xtitle: 'Day', ytitle: 'Number of Login Instances' %><br />
 
-New Route not working!<br />
-<%= line_chart login_histories_charts_path %>
+CONTROLLER VERSION BELOW<br />
+
+<%= line_chart "#{charts_path}/login_histories" %>
