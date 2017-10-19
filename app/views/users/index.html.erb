@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="order-pod">
+<div class="order-pod order-pod__small">
   <div class="information-bar">Search</div>
   <div class="headed-box">
     <% require 'date' %>
@@ -55,9 +55,8 @@
   </table>
 </div>
 
-<%= line_chart LoginHistory.group_by_day(:logged_in).count, xtitle: 'Day', ytitle: "Count" %><br />
-<%= pie_chart User.group(:domain).count %><br />
-<%= column_chart Search.group_by_day_of_week(:departure_date, format: "%a").count,
-                 id: 'column-chart-idhere-1', width: "800px", height: "500px" %><br />
-new route TBD<br />
-<%= line_chart login_histories_charts_path %>
+<%= line_chart LoginHistory.group_by_day(:logged_in).count, xtitle: 'Day', ytitle: 'Number of Login Instances' %><br />
+
+CONTROLLER VERSION BELOW<br />
+
+<%= line_chart "#{charts_path}/login_histories" %>
