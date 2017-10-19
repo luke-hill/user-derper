@@ -1,38 +1,41 @@
-
 <div class="title">
   The User_Derpers List of Magical Users
 </div>
 
-<div class="order-pod">
-  <div class="information-bar">User Details</div>
-  <div class="headed-box">
-    <div class="content">We currently have <%= @users.uk.count %> UK Users registered</div>
-    <div class="content">We currently have <%= @users.se.count %> SE Users registered</div>
-    <div class="content">We currently have <%= @users.no.count %> NO Users registered</div>
-  </div>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">accessibility</i>User Details</div>
+<div class="collapsible-body">
+    <div class="collapsible-content">We currently have <%= @users.uk.count %> UK Users registered</br>
+    We currently have <%= @users.se.count %> SE Users registered</br>
+    We currently have <%= @users.no.count %> NO Users registered</br></div>
 </div>
+</li>
+</ul>
 
-
-<div class="order-pod order-pod__small">
-  <div class="information-bar">Search</div>
-  <div class="headed-box">
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
+  <div class="collapsible-body">
     <% require 'date' %>
     <%= form_tag users_path, method: 'get' do |f| %>
-      <div class="head">Date Search</div>
-      <div class="content"><label for="from">From:</label>
+      Date Search
+      <div class="collapsible-content"><label for="from">From:</label>
       <input type="string" id="from" name="created_at_from"/></div>
-      <div class="content"><label for="to">To:</label>
+      <div class="collapsible-content"><label for="to">To:</label>
       <input type="string" id="to" name="created_at_to"/></div>
-      <div class="content"><%= submit_tag "Select Date" %></div>
+        <%= submit_tag "Select Date" %>
     <% end %>
     <%= form_tag users_path, method: 'get', id: "search-form" do |f| %>
-      <div class="head">Word Search</div>
-      <div class="content"><label>Parameter:</label>
+    <br>
+      Word Search
+      <div class="collapsible-content"><label>Parameter:</label>
         <%= text_field_tag :search, params[:search] %></div>
-      <div class="content"><%= submit_tag "Search" %></div>
+      <%= submit_tag "Search" %>
     <% end %>
   </div>
-</div>
+</li>
+</ul>
 
 <div class="order-pod">
   <div class="information-bar">Users on On the Beach</div>
