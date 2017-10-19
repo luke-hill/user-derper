@@ -4,5 +4,5 @@ class Hotel < ApplicationRecord
   belongs_to :destination
   has_many :searches
 
-  validates_presence_of :name, :destination_id
+  validates :name, :destination_id, presence: true
 end

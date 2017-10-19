@@ -11,7 +11,7 @@ class User < ApplicationRecord
   scope :se, -> { where(domain: 'se') }
   scope :no, -> { where(domain: 'no') }
 
-  validates_presence_of :first_name, :surname, :email
+  validates :first_name, :surname, :email, presence: true
   validates :domain, format: { with: /\A(uk|se|no)\z/, message: 'is invalid' }
 
   def flag
@@ -43,25 +43,25 @@ class User < ApplicationRecord
   end
 
   def last_holiday_info
-    @last_holiday_info ||=
-      {
-        myb: last_holiday.myb,
-        order_date: last_holiday.created_at,
-        nights: booked.nights,
-        departure_date: booked.departure_date,
-        return_date: return_date,
-        type: booked.holiday_type,
-        where: booked_location,
-        hotel: booked_hotel,
-        pax: booked_formatted_pax
-      }
+    @last_holiday_info ||= {
+      myb: last_holiday.myb,
+      order_date: last_holiday.created_at,
+      nights: booked.nights,
+      departure_date: booked.departure_date,
+      return_date: return_date,
+      type: booked.holiday_type,
+      where: booked_location,
+      hotel: booked_hotel,
+      pax: booked_formatted_pax
+    }
   end
 
   def time_since_last_login
     if never_logged_in? || days_since_last_login >= 60
       '<span class="warning">User has not logged in recently</span>'.html_safe
     elsif days_since_last_login >= 1
-      "#{pluralize(days_hours.first, 'Day')} #{pluralize(days_hours.last, 'Hour')}"
+      "#{pluralize(days_hours.first, 'Day')}"\
+      " #{pluralize(days_hours.last, 'Hour')}"
     elsif hours_since_last_login >= 1
       pluralize(days_hours.last, 'Hour').to_s
     else
@@ -90,7 +90,7 @@ class User < ApplicationRecord
   end
 
   def days_since_last_login
-    (DateTime.now - last_login_date.to_datetime)
+    DateTime.now - last_login_date.to_datetime
   end
 
   def last_login_date
@@ -106,11 +106,7 @@ class User < ApplicationRecord
   end
 
   def booked_hotel
-    if last_holiday_flo?
-      'No Hotel'
-    else
-      Hotel.find(booked.hotel_id).name
-    end
+    Hotel.find(booked.hotel_id).name unless last_holiday_flo?
   end
 
   def booked_location
@@ -118,7 +114,8 @@ class User < ApplicationRecord
   end
 
   def booked_formatted_pax
-    "Adults: #{booked.adults} / Children: #{booked.children} / Infants: #{booked.infants}"
+    "Adults: #{booked.adults} / Children: #{booked.children} / "\
+    "Infants: #{booked.infants}"
   end
 
   def last_holiday
@@ -126,6 +123,7 @@ class User < ApplicationRecord
   end
 
   def search_formatted_pax
-    "Adults: #{last_search.adults} / Children: #{last_search.children} / Infants: #{last_search.infants}"
+    "Adults: #{last_search.adults} / Children: #{last_search.children} / "\
+    "Infants: #{last_search.infants}"
   end
 end

@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require Chart.bundle
+//= require chartkick
+
 $( function() {
     var dateFormat = "yyyy-mm-dd",
         from = $( "#from" ).datepicker({

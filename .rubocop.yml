@@ -1,0 +1,12 @@
+AllCops:
+  Include:
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/environments/*'
+    - 'spec/spec_helper.rb'
+
+Documentation:
+  Enabled: false
+
+#49Files / 20Offenses
