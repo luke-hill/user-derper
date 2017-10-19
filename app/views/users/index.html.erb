@@ -62,8 +62,4 @@
   </table>
 </div>
 
-<%= line_chart LoginHistory.group_by_day(:logged_in).count, xtitle: 'Day', ytitle: 'Number of Login Instances' %><br />
-
-CONTROLLER VERSION BELOW<br />
-
-<%= line_chart "#{charts_path}/login_histories" %>
+<%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
