@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :first_name, :surname, :email, presence: true
   validates :domain, format: { with: /\A(uk|se|no)\z/, message: 'is invalid' }
 
+  def self.search(search)
+    where("first_name like ? or surname like ? or email like ? or domain like ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
+
   def flag
     "#{domain}_flag"
   end
