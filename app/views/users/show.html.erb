@@ -1,69 +1,84 @@
-<div class="order-pod">
-  <div class="information-bar">User Details</div>
-  <div class="headed-box">
-    <div class="head">User Name:</div>
-    <div class="content"><%= @user.user_name %></div>
-    <div class="head">Email:</div>
-    <div class="content"><%= @user.email.capitalize %></div>
-    <div class="head">Last Logged in:</div>
-    <div class="content"><%= @user.time_since_last_login %></div>
-    <div class="head head__total">
-      Total Holidays booked: <span class="important"><%= @user.holidays.count %></span>
-    </div>
-  </div>
+<div class="title">
+  User Details
 </div>
 
-<div class="order-pod">
-  <div class="information-bar">Last Search</div>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">person</i>User Details</div>
+  <div class="collapsible-body">
+    User Name:
+    <div class="collapsible-content"><%= @user.user_name %></div>
+    <br>
+    Email:
+    <div class="collapsible-content"><%= @user.email.capitalize %></div>
+    <br>
+    Last Logged in:
+    <div class="collapsible-content"><%= @user.time_since_last_login %></div>
+    <br>
+    Total Holidays booked: <%= @user.holidays.count %>
+    </div>
+  </li>
+</ul>
+
+
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">search</i>Last Search</div>
   <% if @user.last_search %>
-    <div class="headed-box">
-      <div class="head">Where:</div>
-      <div class="content"><%= @user.last_search_info[:where] %></div>
-      <div class="head">When: </div>
-      <div class="content"><%= @user.last_search_info[:when] %></div>
-      <div class="head">Pax:</div>
-      <div class="content"><%= @user.last_search_info[:pax] %></div>
-    </div>
+    <div class="collapsible-body">
+      <br>Where:
+      <div class="collapsible-content"><%= @user.last_search_info[:where] %></div>
+      <br>When:
+      <div class="collapsible-content"><%= @user.last_search_info[:when] %></div>
+      <br>Pax:
+      <div class="collapsible-content"><%= @user.last_search_info[:pax] %></div>
   <% else %>
-    <div class="head">No searches made yet!</div>
+    <br>No searches made yet!</div>
   <% end %>
 </div>
+</li>
+</ul>
 
-<div class="order-pod">
-  <div class="information-bar">Last Holiday Booked </div>
+
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">beach_access</i>Last Holiday Booked </div>
   <% if @user.holidays? %>
-    <div class="headed-box">
-      <div class="head">Order No:</div>
-      <div class="content"><%= @user.last_holiday_info[:myb] %></div>
-      <div class="head">Confirmed On:</div>
-      <div class="content"><%= @user.last_holiday_info[:order_date] %></div>
-      <div class="head">Departure Date:</div>
-      <div class="content"><%= @user.last_holiday_info[:departure_date] %></div>
-      <div class="head">Duration:</div>
-      <div class="content"><%= @user.last_holiday_info[:nights] %></div>
-      <div class="head">Return Date:</div>
-      <div class="content"><%= @user.last_holiday_info[:return_date] %></div>
+    <div class="collapsible-body">
+      <br>Order No:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:myb] %></div>
+      <br>Confirmed On:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:order_date] %></div>
+      <br>Departure Date:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:departure_date] %></div>
+      <br>Duration:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:nights] %></div>
+      <br>Return Date:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:return_date] %></div>
       <% unless @user.last_holiday_flo? %>
-        <div class="head">Hotel:</div>
-        <div class="content"><%= @user.last_holiday_info[:hotel] %></div>
+        <br>Hotel:
+        <div class="collapsible-content"><%= @user.last_holiday_info[:hotel] %></div>
       <% end %>
-      <div class="head">Destination:</div>
-      <div class="content"><%= @user.last_holiday_info[:where] %></div>
-      <div class="head">Holiday Type:</div>
-      <div class="content"><%= @user.last_holiday_info[:type] %></div>
-      <div class="head">Passengers:</div>
-      <div class="content"><%= @user.last_holiday_info[:pax] %></div>
-    </div>
+      <br>Destination:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:where] %></div>
+      <br>Holiday Type:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:type] %></div>
+      <br>Passengers:
+      <div class="collapsible-content"><%= @user.last_holiday_info[:pax] %></div>
   <% else %>
-    <div class="head">No holidays booked yet!</div>
+    <br>No holidays booked yet!
   <% end %>
 </div>
+</li>
+</ul>
 
-<div class="order-pod">
-  <div class="information-bar">Similar User Searches</div>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">group</i>Similar User Searches</div>
   <% if @other_users %>
-    <div class="headed-box">
-      <div class="head">Other users who also searched for this destination were...</div>
+    <div class="collapsible-body">
+      <br>Other users who also searched for this destination were...
+      <div class="collapsible-content">
       <table>
         <tr>
           <th>First Name</th>
@@ -81,18 +96,21 @@
           </tr>
         <% end %>
       </table>
-    </div>
   <% else %>
-    <div class="head">There were no users who searched here</div>
+    <br>There were no users who searched here</div>
   <% end %>
 </div>
+</li>
+</ul>
 
-<div class="order-pod">
-  <div class="information-bar">Actions</div>
-  <div class="headed-box">
-    <div class="content">
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">wb_sunny</i>Actions</div>
+  <div class="collapsible-body">
+    <div class="collapsible-content">
       <%= link_to 'Edit', edit_user_path(@user) %>
       <%= link_to 'Back', users_path %>
     </div>
   </div>
-</div>
+</li>
+</ul>
