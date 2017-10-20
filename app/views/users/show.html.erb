@@ -105,16 +105,25 @@
 </li>
 </ul>
 
-<strong>When you're looking to go on Holiday!</strong>
-<% if @user.last_search %>
-  <%= column_chart user_charts_search_history_by_day_path(@user),
-                   width: '500px', height: '375px', xtitle: 'Day of Departure',
-                   ytitle: 'Number of Searches' %>
 
-  <%= column_chart user_charts_search_history_by_month_path(@user),
-                   width: '500px', height: '375px', xtitle: 'Month of Departure',
-                   ytitle: 'Number of Searches' %>
-<% end %>
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">show_chart</i>Departure Date Searches</div>
+<div class="collapsible-body">
+  <% if @user.last_search %>
+    <%= column_chart user_charts_search_history_by_day_path(@user),
+                     width: '500px', height: '375px', xtitle: 'Day of Departure',
+                     ytitle: 'Number of Searches' %>
+
+    <%= column_chart user_charts_search_history_by_month_path(@user),
+                     width: '500px', height: '375px', xtitle: 'Month of Departure',
+                     ytitle: 'Number of Searches'
+      <%else%>
+      No data to show yet!
+      <% end %>
+  </div>
+  </li>
+</ul>
 
 <ul class="collapsible" data-collapsible="accordion">
    <li>
