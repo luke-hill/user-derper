@@ -33,8 +33,11 @@ class UsersController < ApplicationController
   end
 
   def destroy_multiple
-    @users = User.find(params[:user_ids])
-    @users.destroy_all
+    ids_to_delete = params[:user_ids].map do |kv|
+      kv.first if kv.last['id'] == '1'
+    end.map(&:to_i)
+
+    User.find(ids_to_delete).destroy
 
     redirect_to root_path
   end

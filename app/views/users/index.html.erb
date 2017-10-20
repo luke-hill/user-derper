@@ -59,7 +59,7 @@
   <%= form_tag user_path(@users), method: 'post' do |f| %>
   <table>
     <tr>
-      <th></th>
+      <th>Delete User</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
@@ -70,8 +70,9 @@
     <% @users.each do |user| %>
       <%= fields_for 'user_ids[]', user do |user_field| %>
       <tr>
-        <td style="width:50px">
-          <%= user_field.check_box :user_name, value: user.id %>
+        <td class="delete-column">
+          <%= user_field.check_box :id, value: user.id %>
+          <%= user_field.label ' ' %>
         </td>
         <td><%= user.first_name.capitalize %></td>
         <td><%= user.surname %></td>
