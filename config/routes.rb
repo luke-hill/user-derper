@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'charts/login_history', to: 'charts#login_history'
 
-  #delete '/users/:ids', to: 'users#destroy_multiple'# <- Not tried this yet, but copied from original delete request
+  delete '/users/:ids', to: 'users#destroy_multiple'# <- Not tried this yet, but copied from original delete request
 
   root 'users#index'
 end
