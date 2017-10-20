@@ -13,6 +13,16 @@
 </li>
 </ul>
 
+
+<ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">show_chart</i>Login Instances</div>
+<div class="collapsible-body">
+<%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
+</div>
+</li>
+</ul>
+
 <ul class="collapsible" data-collapsible="accordion">
    <li>
      <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
@@ -64,5 +74,3 @@
     <% end %>
   </table>
 </div>
-
-<%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
