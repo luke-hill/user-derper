@@ -17,50 +17,50 @@
 <ul class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header"><i class="material-icons">search</i>Last Search</div>
-    <% if @user.last_search %>
       <div class="collapsible-body">
-        <br>Where:
-        <div class="collapsible-content"><%= @user.last_search_info[:where] %></div>
-        <br>When:
-        <div class="collapsible-content"><%= @user.last_search_info[:when] %></div>
-        <br>Pax:
-        <div class="collapsible-content"><%= @user.last_search_info[:pax] %></div>
+        <% if @user.last_search %>
+          <br>Where:
+          <div class="collapsible-content"><%= @user.last_search_info[:where] %></div>
+          <br>When:
+          <div class="collapsible-content"><%= @user.last_search_info[:when] %></div>
+          <br>Pax:
+          <div class="collapsible-content"><%= @user.last_search_info[:pax] %></div>
+        <% else %>
+          No searches made yet!
+        <% end %>
       </div>
-    <% else %>
-      <br><div>No searches made yet!</div>
-    <% end %>
-  </li>
+    </li>
 </ul>
 
 <ul class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header"><i class="material-icons">beach_access</i>Last Holiday Booked </div>
-    <% if @user.holidays? %>
       <div class="collapsible-body">
-        <br>Order No:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:myb] %></div>
-        <br>Confirmed On:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:order_date] %></div>
-        <br>Departure Date:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:departure_date] %></div>
-        <br>Duration:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:nights] %></div>
-        <br>Return Date:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:return_date] %></div>
+        <% if @user.holidays? %>
+          <br>Order No:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:myb] %></div>
+          <br>Confirmed On:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:order_date] %></div>
+          <br>Departure Date:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:departure_date] %></div>
+          <br>Duration:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:nights] %></div>
+          <br>Return Date:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:return_date] %></div>
         <% unless @user.last_holiday_flo? %>
           <br>Hotel:
           <div class="collapsible-content"><%= @user.last_holiday_info[:hotel] %></div>
         <% end %>
-        <br>Destination:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:where] %></div>
-        <br>Holiday Type:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:type] %></div>
-        <br>Passengers:
-        <div class="collapsible-content"><%= @user.last_holiday_info[:pax] %></div>
+          <br>Destination:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:where] %></div>
+          <br>Holiday Type:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:type] %></div>
+          <br>Passengers:
+          <div class="collapsible-content"><%= @user.last_holiday_info[:pax] %></div>
+        <% else %>
+          No holidays booked yet!
+        <% end %>
       </div>
-    <% else %>
-      <br>No holidays booked yet!
-    <% end %>
   </li>
 </ul>
 
@@ -103,13 +103,15 @@
     <div class="collapsible-header"><i class="material-icons">show_chart</i>Departure Date Searches</div>
     <div class="collapsible-body">
       <% if @user.last_search %>
-        <%= column_chart user_charts_search_history_by_day_path(@user),
+        <table>
+          <td><%= column_chart user_charts_search_history_by_day_path(@user),
                          width: '500px', height: '375px', xtitle: 'Day of Departure',
-                         ytitle: 'Number of Searches' %>
+                         ytitle: 'Number of Searches' %></td>
 
-        <%= column_chart user_charts_search_history_by_month_path(@user),
+           <td><%= column_chart user_charts_search_history_by_month_path(@user),
                          width: '500px', height: '375px', xtitle: 'Month of Departure',
-                         ytitle: 'Number of Searches' %>
+                         ytitle: 'Number of Searches' %></td>
+        </table>
       <% else %>
         No data to show yet!
       <% end %>
