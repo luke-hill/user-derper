@@ -3,48 +3,54 @@
 </div>
 
 <ul class="collapsible" data-collapsible="accordion">
-   <li>
-     <div class="collapsible-header"><i class="material-icons">accessibility</i>User Details</div>
-<div class="collapsible-body">
-    <div class="collapsible-content">We currently have <%= @users.uk.count %> UK Users registered</br>
-    We currently have <%= @users.se.count %> SE Users registered</br>
-    We currently have <%= @users.no.count %> NO Users registered</br></div>
-</div>
-</li>
-</ul>
-
-
-<ul class="collapsible" data-collapsible="accordion">
-   <li>
-     <div class="collapsible-header"><i class="material-icons">show_chart</i>Login Instances</div>
-<div class="collapsible-body">
-<%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
-</div>
-</li>
+  <li>
+    <div class="collapsible-header"><i class="material-icons">accessibility</i>User Details</div>
+    <div class="collapsible-body">
+      <div class="collapsible-content">
+        We currently have <%= @users.uk.count %> UK Users registered<br />
+        We currently have <%= @users.se.count %> SE Users registered<br />
+        We currently have <%= @users.no.count %> NO Users registered<br />
+      </div>
+    </div>
+  </li>
 </ul>
 
 <ul class="collapsible" data-collapsible="accordion">
-   <li>
-     <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
-  <div class="collapsible-body">
-    <% require 'date' %>
-    <%= form_tag users_path, method: 'get' do |f| %>
-      Date Search
-      <div class="collapsible-content"><label for="from">From:</label>
-      <input type="string" id="from" name="created_at_from"/></div>
-      <div class="collapsible-content"><label for="to">To:</label>
-      <input type="string" id="to" name="created_at_to"/></div>
-        <%= submit_tag "Select Date" %>
-    <% end %>
-    <%= form_tag users_path, method: 'get', id: "search-form" do |f| %>
-    <br>
-      Word Search
-      <div class="collapsible-content"><label>Parameter:</label>
-        <%= text_field_tag :search, params[:search] %></div>
-      <%= submit_tag "Search" %>
-    <% end %>
-  </div>
-</li>
+  <li>
+    <div class="collapsible-header"><i class="material-icons">show_chart</i>Login Instances</div>
+    <div class="collapsible-body">
+      <%= line_chart charts_login_history_path, xtitle: 'Day', ytitle: 'Number of Login Instances' %>
+    </div>
+  </li>
+</ul>
+
+<ul class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
+    <div class="collapsible-body">
+      <% require 'date' %>
+      <%= form_tag users_path, method: 'get' do |f| %>
+        Date Search
+        <div class="collapsible-content">
+          <label for="from">From:</label>
+          <input type="string" id="from" name="created_at_from"/>
+        </div>
+        <div class="collapsible-content">
+          <label for="to">To:</label>
+          <input type="string" id="to" name="created_at_to"/>
+        </div>
+        <%= submit_tag 'Select Date' %>
+      <% end %>
+      <%= form_tag users_path, method: 'get', id: 'search-form' do |f| %><br />
+        Word Search
+        <div class="collapsible-content">
+          <label>Parameter:</label>
+          <%= text_field_tag :search, params[:search] %>
+        </div>
+        <%= submit_tag 'Search' %>
+      <% end %>
+    </div>
+  </li>
 </ul>
 
 <div class="order-pod">
