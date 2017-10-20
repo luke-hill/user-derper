@@ -56,7 +56,7 @@
 <div class="order-pod">
   <div class="information-bar">Users on On the Beach</div>
   <div class="pagination"><%= will_paginate @users %></div>
-  <%= form_tag users_path, method: 'delete', data: { confirm: 'Are you sure?' } do |f| %>
+  <%= form_tag '/user/destroy_multiple', method: 'post' do |f| %>
   <table>
     <tr>
       <th></th>
@@ -69,7 +69,7 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= form_for user do %>
+        <td style="width:50px"><%= form_for user do %>
               <%= check_box_tag "user_ids[]", user.id, false, id: "delete_user_#{user.id}" %>
           <% end %></td></td>
         <td><%= user.first_name.capitalize %></td>
@@ -85,6 +85,5 @@
     <% end %>
   </table>
   <%= submit_tag 'Delete Checked' %>
-
   <% end %>
 </div>
