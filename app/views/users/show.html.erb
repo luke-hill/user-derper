@@ -17,8 +17,8 @@
 <ul class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header"><i class="material-icons">search</i>Last Search</div>
+    <div class="collapsible-body">
     <% if @user.last_search %>
-      <div class="collapsible-body">
         <br>Where:
         <div class="collapsible-content"><%= @user.last_search_info[:where] %></div>
         <br>When:
@@ -27,7 +27,7 @@
         <div class="collapsible-content"><%= @user.last_search_info[:pax] %></div>
       </div>
     <% else %>
-      <br><div>No searches made yet!</div>
+      No searches made yet!</div>
     <% end %>
   </li>
 </ul>
@@ -35,8 +35,8 @@
 <ul class="collapsible" data-collapsible="accordion">
   <li>
     <div class="collapsible-header"><i class="material-icons">beach_access</i>Last Holiday Booked </div>
+    <div class="collapsible-body">
     <% if @user.holidays? %>
-      <div class="collapsible-body">
         <br>Order No:
         <div class="collapsible-content"><%= @user.last_holiday_info[:myb] %></div>
         <br>Confirmed On:
@@ -57,10 +57,10 @@
         <div class="collapsible-content"><%= @user.last_holiday_info[:type] %></div>
         <br>Passengers:
         <div class="collapsible-content"><%= @user.last_holiday_info[:pax] %></div>
-      </div>
-    <% else %>
-      <br>No holidays booked yet!
+          <% else %>
+          No holidays booked yet!
     <% end %>
+    </div>
   </li>
 </ul>
 
