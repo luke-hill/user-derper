@@ -103,13 +103,15 @@
     <div class="collapsible-header"><i class="material-icons">show_chart</i>Departure Date Searches</div>
     <div class="collapsible-body">
       <% if @user.last_search %>
-        <%= column_chart user_charts_search_history_by_day_path(@user),
+        <table>
+          <td><%= column_chart user_charts_search_history_by_day_path(@user),
                          width: '500px', height: '375px', xtitle: 'Day of Departure',
-                         ytitle: 'Number of Searches' %>
+                         ytitle: 'Number of Searches' %></td>
 
-        <%= column_chart user_charts_search_history_by_month_path(@user),
+        <td><%= column_chart user_charts_search_history_by_month_path(@user),
                          width: '500px', height: '375px', xtitle: 'Month of Departure',
-                         ytitle: 'Number of Searches' %>
+                         ytitle: 'Number of Searches' %></td>
+          </table>
       <% else %>
         No data to show yet!
       <% end %>
